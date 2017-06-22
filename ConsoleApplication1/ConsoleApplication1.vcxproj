@@ -139,13 +139,17 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="IItem.h" />
     <ClInclude Include="IMassable.h" />
+    <ClInclude Include="IMover.h" />
     <ClInclude Include="INameble.h" />
     <ClInclude Include="IProperty.h" />
     <ClInclude Include="ISpaceObject.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Mover.h" />
     <ClInclude Include="SomeItem.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="unit.h" />
+    <ClInclude Include="Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
@@ -155,6 +159,7 @@
     <ClCompile Include="IProperty.cpp" />
     <ClCompile Include="ISpaceObject.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Mover.cpp" />
     <ClCompile Include="SomeItem.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -162,6 +167,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="unit.cpp" />
+    <ClCompile Include="Visualizer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+using namespace std;
 
 class ISpaceObject;
 class Cell
@@ -10,7 +11,7 @@ private:
 public:
 	Cell();
 	virtual ~Cell();
-	auto setSpaceObject(std::unique_ptr<ISpaceObject>&& spaceObject) -> void;
-	auto getSpaceObject() -> ISpaceObject*;
+	auto setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void;
+	auto getSpaceObject()->shared_ptr<ISpaceObject>;
 };
 

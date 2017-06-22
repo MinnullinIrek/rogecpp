@@ -16,6 +16,15 @@
     <Filter Include="Заголовочные файлы\property">
       <UniqueIdentifier>{c3cdb5c1-a00d-4cc5-ab5b-09831ff09c15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\visulizer">
+      <UniqueIdentifier>{522782a3-e503-4a45-9216-6ad0377d69f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\units">
+      <UniqueIdentifier>{79379cf8-8f9a-4a55-a671-857f06d7c7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\mover">
+      <UniqueIdentifier>{bd998127-11b5-4e47-b558-7394d5b0f45f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -54,6 +63,18 @@
     <ClInclude Include="IProperty.h">
       <Filter>Заголовочные файлы\property</Filter>
     </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualizer.h">
+      <Filter>Заголовочные файлы\visulizer</Filter>
+    </ClInclude>
+    <ClInclude Include="IMover.h">
+      <Filter>Заголовочные файлы\property</Filter>
+    </ClInclude>
+    <ClInclude Include="Mover.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -81,6 +102,15 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="IProperty.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="unit.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualizer.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="Mover.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

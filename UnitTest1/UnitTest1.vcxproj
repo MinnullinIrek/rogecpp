@@ -75,14 +75,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\minnullin_iz\Documents\Visual Studio 2015\Projects\roge\roge;C:\Users\minnullin_iz\Documents\Visual Studio 2015\Projects\roge\ConsoleApplication1;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\ConsoleApplication1;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\minnullin_iz\Documents\Visual Studio 2015\Projects\roge\roge;C:\Users\minnullin_iz\Documents\Visual Studio 2015\Projects\roge\ConsoleApplication1;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\ConsoleApplication1;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>

@@ -5,7 +5,7 @@
 
 struct Cell::Impl
 {
-	std::unique_ptr<ISpaceObject> spceObj;
+	shared_ptr<ISpaceObject> spceObj;
 };
 
 Cell::Cell():impl(std::make_unique<Impl>())
@@ -17,13 +17,13 @@ Cell::~Cell()
 {
 }
 
-auto Cell::setSpaceObject(std::unique_ptr<ISpaceObject>&& spaceObject) -> void
+auto Cell::setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void 
 {
-	impl->spceObj.reset(spaceObject.release());
+	impl->spceObj = spaceObject;
 }
 
-auto Cell::getSpaceObject() -> ISpaceObject *
+auto Cell::getSpaceObject() -> shared_ptr<ISpaceObject>
 {
-	return impl->spceObj.release();
+	return impl->spceObj;
 }
 

@@ -1,8 +1,2 @@
-﻿  stdafx.cpp
-  Unit.cpp
-  roge.cpp
-  Map.cpp
-  ISpaceObject.cpp
-  Cell.cpp
-  Создание кода...
+﻿  roge.cpp
   roge.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Debug\roge.exe

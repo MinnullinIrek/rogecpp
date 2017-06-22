@@ -4,7 +4,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 #include "Cell.h"
-#include "Unit.h"
+#include "unit.h"
 
 namespace UnitTest1
 {		
@@ -15,11 +15,15 @@ namespace UnitTest1
 		TEST_METHOD(TestMethod1)
 		{
 			Cell cell;
+			
+			
+			std::shared_ptr<ISpaceObject> ispace = std::make_shared<Unit>();
+			ISpaceObject *sp1 = ispace.get();
 
-			std::unique_ptr<ISpaceObject> ispace = std::make_unique<ISpaceObject>();
-			cell.setSpaceObject(move(ispace));
+			cell.setSpaceObject(ispace);
+			ISpaceObject *sp2 = cell.getSpaceObject().get();
 			// TODO: Разместите здесь код своего теста
-			Assert::IsNull(ispace.get());
+			Assert::IsTrue(sp1 == sp2);
 		}
 
 	};

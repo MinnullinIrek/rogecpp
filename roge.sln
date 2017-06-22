@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "UnitTest1\Unit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rogelib", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{98A3E291-F3B4-4D8D-B9F4-9759ACEC47F9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vizualizer", "Vizualizer\Vizualizer.vcxproj", "{9629D7EA-CC53-499E-BF34-13CA493F9D70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{98A3E291-F3B4-4D8D-B9F4-9759ACEC47F9}.Release|x64.Build.0 = Release|x64
 		{98A3E291-F3B4-4D8D-B9F4-9759ACEC47F9}.Release|x86.ActiveCfg = Release|Win32
 		{98A3E291-F3B4-4D8D-B9F4-9759ACEC47F9}.Release|x86.Build.0 = Release|Win32
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Debug|x64.ActiveCfg = Debug|x64
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Debug|x64.Build.0 = Debug|x64
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Debug|x86.ActiveCfg = Debug|Win32
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Debug|x86.Build.0 = Debug|Win32
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Release|x64.ActiveCfg = Release|x64
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Release|x64.Build.0 = Release|x64
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Release|x86.ActiveCfg = Release|Win32
+		{9629D7EA-CC53-499E-BF34-13CA493F9D70}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
