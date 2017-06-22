@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 
+class IItem;
+
 class Bag final
 {
 private:
@@ -10,5 +12,8 @@ private:
 public:
 	Bag();
 	~Bag();
+	auto getSize();
+
+	auto push_back(std::shared_ptr<IItem> item) -> void;
 };
 
