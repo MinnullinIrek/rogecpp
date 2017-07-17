@@ -27,7 +27,7 @@
     <ClInclude Include="Form.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="visUtils.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

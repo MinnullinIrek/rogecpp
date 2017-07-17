@@ -1,3 +1,15 @@
-﻿  Mover.cpp
+﻿  stdafx.cpp
+  Visualizer.cpp
+  unit.cpp
+  SomeItem.cpp
+  Mover.cpp
+  Map.cpp
+  ISpaceObject.cpp
+  IProperty.cpp
+  INameble.cpp
+  IItem.cpp
+  Cell.cpp
+  Bag.cpp
+  Создание кода...
 INameble.obj : warning LNK4221: ▌ЄюЄ Їрщы юс·хъЄр эх юяЁхфхы хЄ ъръшх-ышсю Ёрэхх эхюяЁхфхыхээ√х юЄъЁ√Є√х ёшьтюы√, яю¤Єюьє юэ эх сєфхЄ шёяюы№чютрЄ№ё  эшъръшьш юяхЁрЎш ьш ъюьяюэютъш, юсЁр∙р■∙шьшё  ъ ¤Єющ сшсышюЄхъх
   ConsoleApplication1.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Debug\rogelib.lib

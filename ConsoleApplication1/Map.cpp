@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Map.h"
 #include "Cell.h"
-#include <vector>
+#include <unordered_map>
 
 struct Map::Cells
 {
@@ -33,6 +33,8 @@ private:
 	const size_t	rowCount = 0;
 	const size_t	colCount = 0;
 	const std::vector<Cell*> cells;
+
+	
 
 };
 

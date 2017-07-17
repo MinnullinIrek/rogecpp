@@ -1,2 +1,4 @@
 ﻿  roge.cpp
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\vizualizer\visutils.h(79): warning C4018: <=: несоответствие типов со знаком и без знака
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\vizualizer\visutils.h(80): warning C4018: <: несоответствие типов со знаком и без знака
   roge.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Debug\roge.exe
