@@ -1,15 +1,26 @@
-﻿  stdafx.cpp
-  Visualizer.cpp
-  unit.cpp
-  SomeItem.cpp
-  Mover.cpp
+﻿  Visual.cpp
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\vizualizer\visutils.h(79): warning C4018: <=: несоответствие типов со знаком и без знака
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\vizualizer\visutils.h(80): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2065: Cell: необъявленный идентификатор
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2923: std::shared_ptr: "Cell" не является допустимым аргументом типа шаблон для параметра "_Ty"
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\visual.cpp(44): error C2664: "void Visual::Impl::printCellIn(std::shared_ptr<Cell>,size_t,size_t)": невозможно преобразовать аргумент 1 из "std::shared_ptr" в "std::shared_ptr<Cell>"
+  c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\visual.cpp(44): note: Для выполнения данного преобразования нет доступного оператора преобразования, определенного пользователем, или вызов оператора невозможен
   Map.cpp
-  ISpaceObject.cpp
-  IProperty.cpp
-  INameble.cpp
-  IItem.cpp
-  Cell.cpp
-  Bag.cpp
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2065: Cell: необъявленный идентификатор
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2923: std::shared_ptr: "Cell" не является допустимым аргументом типа шаблон для параметра "_Ty"
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.cpp(85): error C2556: std::shared_ptr<Cell> Map::getCell(size_t,size_t): перегруженная функция отличается от "std::shared_ptr Map::getCell(size_t,size_t)" только возвращаемым типом
+  c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): note:  см. объявление "Map::getCell"
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.cpp(85): error C2371: Map::getCell: переопределение; различные базовые типы
+  c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): note:  см. объявление "Map::getCell"
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.cpp(85): error C2079: "Map::getCell" использует неопределенный class "std::shared_ptr"
   Создание кода...
-INameble.obj : warning LNK4221: ▌ЄюЄ Їрщы юс·хъЄр эх юяЁхфхы хЄ ъръшх-ышсю Ёрэхх эхюяЁхфхыхээ√х юЄъЁ√Є√х ёшьтюы√, яю¤Єюьє юэ эх сєфхЄ шёяюы№чютрЄ№ё  эшъръшьш юяхЁрЎш ьш ъюьяюэютъш, юсЁр∙р■∙шьшё  ъ ¤Єющ сшсышюЄхъх
-  ConsoleApplication1.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Debug\rogelib.lib
+  Компиляция...
+  Mover.cpp
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2065: Cell: необъявленный идентификатор
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2923: std::shared_ptr: "Cell" не является допустимым аргументом типа шаблон для параметра "_Ty"
+  Создание кода...
+  Компиляция...
+  Visualizer.cpp
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2065: Cell: необъявленный идентификатор
+c:\users\minnullin_iz\documents\books\rogecpp\rogecpp\consoleapplication1\map.h(13): error C2923: std::shared_ptr: "Cell" не является допустимым аргументом типа шаблон для параметра "_Ty"
+  Создание кода...

@@ -7,7 +7,7 @@
 
 #include "targetver.h"
 #include <string>
-
+#include <memory>
 using namespace std;
 #define WIN32_LEAN_AND_MEAN             // Исключите редко используемые компоненты из заголовков Windows
 
