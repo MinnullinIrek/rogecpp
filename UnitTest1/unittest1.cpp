@@ -17,7 +17,7 @@ namespace UnitTest1
 			Cell cell;
 			
 			
-			std::shared_ptr<ISpaceObject> ispace = std::make_shared<Unit>();
+			std::shared_ptr<ISpaceObject> ispace = std::make_shared<Unit>(' ');
 			ISpaceObject *sp1 = ispace.get();
 
 			cell.setSpaceObject(ispace);

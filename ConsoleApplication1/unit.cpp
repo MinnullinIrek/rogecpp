@@ -21,8 +21,9 @@ wchar_t Unit::getChar()
 	return impl->name.ch;
 }
 
-Unit::Unit()
+Unit::Unit(wchar_t ch):impl(make_unique<Impl>())
 {
+	impl->name.ch = ch;
 }
 
 

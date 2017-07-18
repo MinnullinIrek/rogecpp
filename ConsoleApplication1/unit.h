@@ -9,7 +9,7 @@ class Unit  : public ISpaceObject , public INameble
 	unique_ptr<Impl> impl;
 
 public:
-	Unit();
+	Unit(wchar_t ch);
 	~Unit();
 	
 	virtual operator wchar_t() override;

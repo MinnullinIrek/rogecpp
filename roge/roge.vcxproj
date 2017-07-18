@@ -164,6 +164,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleApplication1\ConsoleApplication1.vcxproj">
+      <Project>{98a3e291-f3b4-4d8d-b9f4-9759acec47f9}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Vizualizer\Vizualizer.vcxproj">
       <Project>{9629d7ea-cc53-499e-bf34-13ca493f9d70}</Project>
     </ProjectReference>

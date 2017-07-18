@@ -13,19 +13,47 @@
 #include <iostream>
 #include <iterator>
 #include <Windows.h>
-#include "../Vizualizer/visUtils.h"
+//#include "../Vizualizer/visUtils.h"
 
 #include <unordered_map>
 #include <functional>
+#include <memory>
 
 
 using namespace std;
 
+class MyClass
+{
+public:
+	MyClass();
+	~MyClass();
 
+private:
 
+};
+
+#include "../ConsoleApplication1/Map.h"
+//#include "../ConsoleApplication1/Cell.h"
+#include "../ConsoleApplication1/MapCreator.h"
+#include "../ConsoleApplication1/Visual.h"
 int main()
 {
 	setlocale(LC_ALL, "rus");
+
+	MapCreator cr;
+
+	auto mp = cr.createMap();
+	Visual v;
+	v.setMap(mp);
+	v.printRegionIn(Region{ 0,0,10,10 }, Region{ 0, 0, 10, 10 });
+
+
+	shared_ptr<MyClass> mycl = make_shared<MyClass>();
+
+	weak_ptr<MyClass> wmycl;
+
+	wmycl = mycl;
+
 
 	auto h = GetStdHandle(STD_OUTPUT_HANDLE);
 	prepareConsole(h);
@@ -35,3 +63,10 @@ int main()
     return 0;
 }
 
+MyClass::MyClass()
+{
+}
+
+MyClass::~MyClass()
+{
+}

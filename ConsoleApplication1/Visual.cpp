@@ -17,23 +17,29 @@ struct Visual::Impl
 		else
 			--itHandle;
 	}
-
+	shared_ptr<Map> map;
 public:
 	array<HANDLE, 2> handles;
 	array<HANDLE, 2> ::iterator itHandle;
 
-	Impl(shared_ptr<Map> _map):
-		map(_map) 
+	Impl()
 	{
 		
-		for (auto & ihandle: handles)
-			ihandle = createBuffer();		
+
+	}
+
+	void setMap(shared_ptr<Map> _map)
+	{
+		map = _map;
+		for (auto & ihandle : handles)
+			ihandle = createBuffer();
 
 		itHandle = handles.begin();
 		setActiveBuffer(*itHandle);
+
 	}
 
-	shared_ptr<Map> map;
+	
 
 	auto printCellIn(shared_ptr<Cell> cell, short conRow, short conCol)
 	{
@@ -43,13 +49,18 @@ public:
 };
 
 
-Visual::Visual()
+Visual::Visual():impl(make_unique<Impl>())
 {
 }
 
 
 Visual::~Visual()
 {
+}
+
+void Visual::setMap(shared_ptr<Map> map)
+{
+	impl->setMap(map);
 }
 
 void Visual::printRegionIn(Region && regMap, Region && regCon)

@@ -3,6 +3,8 @@
 
 #include "../Vizualizer/visUtils.h"
 
+class Map;
+
 class Visual
 {
 	struct Impl;
@@ -13,6 +15,8 @@ class Visual
 public:
 	Visual();
 	~Visual();
+
+	void setMap(shared_ptr<Map> map);
 
 	void printRegionIn(Region &&regMap, Region &&regConsole);
 

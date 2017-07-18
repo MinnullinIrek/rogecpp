@@ -6,8 +6,8 @@ class ISpaceObject;
 class Cell
 {
 private:
-	struct Impl;
-	std::unique_ptr<Impl> impl;
+	struct Impl ;
+	unique_ptr<Impl> impl;
 public:
 	Cell();
 	virtual ~Cell();
@@ -15,5 +15,8 @@ public:
 	auto getSpaceObject() -> shared_ptr<ISpaceObject>;
 	operator wchar_t();
 	auto getChar() -> wchar_t;
+
+
+
 };
 

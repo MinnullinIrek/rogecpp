@@ -2,6 +2,7 @@
 #include <string>
 #include <Windows.h>
 
+
 //GetConsoleScreenBufferInfo	Извлекает размер окна, размер экранного буфера и атрибуты цвета.
 //SetConsoleWindowInfo	Изменяет размер окна консоли.
 //SetConsoleScreenBufferSize	Изменяет размер экранного буфера консоли.
@@ -40,10 +41,7 @@ enum class Color {
 	White = 15
 };
 
-void SetColor(HANDLE h, Color text, Color background)
-{
-	SetConsoleTextAttribute(h, (static_cast<WORD>(background) << 4) | static_cast<WORD>(text));
-}
+void SetColor1(HANDLE h, Color text, Color background);
 
 inline auto createBuffer() -> HANDLE
 {
@@ -55,11 +53,11 @@ inline void setActiveBuffer(HANDLE h)
 	SetConsoleActiveScreenBuffer(h);
 }
 
-inline void putChar(HANDLE h, COORD &coord , const std::wstring& ch, Color color, Color bkcolor)
+inline void putChar(HANDLE h, COORD &&coord , const std::wstring& ch, Color color, Color bkcolor)
 {
 	//SetConsoleCursorPosition(h, coord);
 	
-	SetColor(h, color, bkcolor);
+	SetColor1(h, color, bkcolor);
 	WriteConsoleOutputCharacter(h, ch.c_str(), ch.length(), coord, d);
 }
 
@@ -101,8 +99,8 @@ inline void printRegion(HANDLE h, const Region &r, Color col, Color bkColor)
 	}
 }
 
-inline void putChar(HANDLE h, COORD &coord, wchar_t ch, Color color, Color bkcolor)
+inline void putChar(HANDLE h, COORD &&coord, wchar_t ch, Color color, Color bkcolor)
 {
-	SetColor(h, color, bkcolor);
+	SetColor1(h, color, bkcolor);
 	WriteConsoleOutputCharacter(h, &ch, 1, coord, d);
 }
