@@ -72,11 +72,12 @@ inline void clearRect(HANDLE h, const Region &r, wchar_t empty)
 
 inline void putTextToRegion(HANDLE h, const Region &r, const std::wstring &str)
 {
-	auto delta = r.col2 - r.col1 + 1;
-	auto current =  0;
+	size_t delta = r.col2 - r.col1 + 1;
+	size_t current =  0;
 	auto len = str.length();
 
 	for (auto irow = r.row1; irow <= r.row2 && current <= str.length(); irow++) {
+
 		WriteConsoleOutputCharacter(h, str.c_str() + current, min(len - current, delta), COORD{ r.col1, irow }, d);
 		current += delta;
 	}
@@ -98,4 +99,10 @@ inline void printRegion(HANDLE h, const Region &r, Color col, Color bkColor)
 		putChar(h, COORD{ r.col1, irow }, L"|", col, bkColor);
 		putChar(h, COORD{ r.col2, irow }, L"|", col, bkColor);
 	}
+}
+
+inline void putChar(HANDLE h, COORD &coord, wchar_t ch, Color color, Color bkcolor)
+{
+	SetColor(h, color, bkcolor);
+	WriteConsoleOutputCharacter(h, &ch, 1, coord, d);
 }

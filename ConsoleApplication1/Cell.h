@@ -12,6 +12,8 @@ public:
 	Cell();
 	virtual ~Cell();
 	auto setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void;
-	auto getSpaceObject()->shared_ptr<ISpaceObject>;
+	auto getSpaceObject() -> shared_ptr<ISpaceObject>;
+	operator wchar_t();
+	auto getChar() -> wchar_t;
 };
 
