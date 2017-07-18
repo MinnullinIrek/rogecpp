@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "Unit.h"
+#include "Mover.h"
 
 struct Unit::Impl
 {
 	Name name;
+	unique_ptr<Mover> mover;
 };
 
 wstring Unit::getName(Type t)
@@ -19,6 +21,11 @@ void Unit::setName(wstring&& nm, Type t )
 wchar_t Unit::getChar()
 {
 	return impl->name.ch;
+}
+
+void Unit::setMover(unique_ptr<Mover> mover)
+{
+	impl->mover.reset(mover.get());
 }
 
 Unit::Unit(wchar_t ch):impl(make_unique<Impl>())

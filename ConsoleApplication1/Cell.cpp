@@ -39,3 +39,8 @@ auto Cell::getChar() -> wchar_t
 	return static_cast<wchar_t>(' ');
 }
 
+auto Cell::isEmpty() -> bool
+{
+	return impl->spceObj.get() == nullptr;
+}
+

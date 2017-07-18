@@ -81,7 +81,7 @@
     <ClInclude Include="MapCreator.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="TestMap.h">
+    <ClInclude Include="SimpleMover.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
@@ -128,7 +128,7 @@
     <ClCompile Include="MapCreator.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="TestMap.cpp">
+    <ClCompile Include="SimpleMover.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>

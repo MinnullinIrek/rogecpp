@@ -1,21 +1,28 @@
 #pragma once
-#include <memory>
-#include "Map.h"
-#include "Cell.h"
-#include "unit.h"
+//#include <memory>
+
+
+class Cell;
+class Unit;
+class Map;
 
 using namespace std;
 class Mover
 {
-	weak_ptr<Map>		map;
-	weak_ptr<Cell>		currentCell;
-	shared_ptr<Unit>	unit;
+protected:
+
+	shared_ptr<Map>		  map;
+	shared_ptr<Cell>	  currentCell;
+	pair<size_t, size_t>  coord;
+	shared_ptr<Unit>	  unit;
+
 
 public:
 	Mover();
 	~Mover();
 
-
-
+	virtual void moveTo(pair<size_t, size_t> && coord) = 0;
+protected:
+	void blinkTo(pair<size_t, size_t> &&coord);
 };
 

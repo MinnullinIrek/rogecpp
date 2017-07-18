@@ -15,7 +15,7 @@ public:
 	auto getSpaceObject() -> shared_ptr<ISpaceObject>;
 	operator wchar_t();
 	auto getChar() -> wchar_t;
-
+	auto isEmpty() -> bool;
 
 
 };
