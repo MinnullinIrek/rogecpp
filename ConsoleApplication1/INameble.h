@@ -3,6 +3,7 @@
 #include <array>
 
 #include "IProperty.h"
+#include "utils.h"
 
 
 class INameble abstract : public IProperty

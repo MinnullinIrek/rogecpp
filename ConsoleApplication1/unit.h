@@ -1,4 +1,5 @@
 #pragma once
+#include "utils.h"
 #include "ISpaceObject.h"
 #include "INameble.h"
 #include "IMover.h"
@@ -24,7 +25,7 @@ public:
 	virtual void setMover(Mover* mover);
 	virtual auto moveTo(size_t row, size_t col) -> void override;
 	shared_ptr<Cell> currentCell();
-	pair<size_t, size_t> getCoord();
+	Coords getCoord();
 
 
 };

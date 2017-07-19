@@ -8,7 +8,7 @@
 #include "Cell.h"
 
 
-typedef pair<size_t, size_t> CoordPair;
+typedef Coords CoordPair;
 
 //struct Map::Impl
 //{
@@ -22,7 +22,7 @@ struct Map::Cells
 	{
 		for (size_t row = 0; row < colCount; row++) {
 			for (size_t col = 0; col < colCount; col++) {
-				cells[std::pair<size_t, size_t>(row, col)] = std::make_shared<Cell>();
+				cells[Coords(row, col)] = make_shared<Cell>();
 			}
 		}
 	}
@@ -31,14 +31,14 @@ struct Map::Cells
 
 	function<bool(const CoordPair&, const CoordPair&)> equaler = [](const CoordPair& lhs, const CoordPair& rhs) { return lhs.first == rhs.first && lhs.second == rhs.second; };
 	function<size_t(const CoordPair&)> hasher = [this](const CoordPair& coord) { return this->colCount*coord.first + coord.second; };
-	typedef std::unordered_map < std::pair<size_t, size_t>, shared_ptr<Cell>, decltype(hasher), decltype(equaler) > CellMap;
+	typedef unordered_map < Coords, shared_ptr<Cell>, decltype(hasher), decltype(equaler) > CellMap;
 
 
 
 
 	auto getCell(size_t row, size_t col)-> shared_ptr<Cell>
 	{
-		return cells.at(std::pair<size_t, size_t>(row, col));
+		return cells.at(Coords(row, col));
 	}
 
 	auto operator()(size_t row, size_t col)-> shared_ptr<Cell>
@@ -46,17 +46,17 @@ struct Map::Cells
 		return getCell(row, col);
 	}
 
-	auto operator()(pair<size_t, size_t> && coord)-> shared_ptr<Cell>
+	auto operator()(Coords && coord)-> shared_ptr<Cell>
 	{
 		return cells[(coord)];
 	}
 
-	auto operator()(const pair<size_t, size_t> & coord)-> shared_ptr<Cell>
+	auto operator()(const Coords & coord)-> shared_ptr<Cell>
 	{
 		return cells[coord];
 	}
 
-	auto operator [](std::pair<size_t, size_t>&& coords)-> shared_ptr<Cell>
+	auto operator [](Coords&& coords)-> shared_ptr<Cell>
 	{
 		return getCell(coords.first, coords.second);
 	}
@@ -93,12 +93,12 @@ auto Map::getCell(size_t row, size_t col) -> shared_ptr<Cell>
 	return impl->cells(row, col);
 }
 
-auto Map::getCell(pair<size_t, size_t>&& coord) -> shared_ptr<Cell>
+auto Map::getCell(Coords&& coord) -> shared_ptr<Cell>
 {
 	return impl->cells(move(coord));
 }
 
-auto Map::getCell(const pair<size_t, size_t>& coord) const -> shared_ptr<Cell>
+auto Map::getCell(const Coords& coord) const -> shared_ptr<Cell>
 {
 	return impl->cells(coord);
 }

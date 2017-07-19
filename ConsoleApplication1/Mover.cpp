@@ -8,7 +8,7 @@ Mover::Mover()
 {
 }
 
-Mover::Mover(shared_ptr<Map> map, shared_ptr<Cell> currentCell, pair<size_t, size_t> coord, shared_ptr<Unit> unit):
+Mover::Mover(shared_ptr<Map> map, shared_ptr<Cell> currentCell, Coords coord, shared_ptr<Unit> unit):
 	map(map), currentCell(currentCell), coord(coord), unit(unit)
 {
 }
@@ -23,18 +23,16 @@ shared_ptr<Cell> Mover::getCurrentCell()
 	return currentCell;
 }
 
-pair<size_t, size_t> Mover::getCoord()
+Coords Mover::getCoord()
 {
 	return coord;
 }
 
-void Mover::blinkTo(pair<size_t, size_t> &&cord)
+void Mover::blinkTo(Coords &&cord)
 {
+	auto cell = map->getCell(Coords(cord));
 	
-	auto cell = map->getCell(pair<size_t, size_t>(cord));
-	
-	if (cell.get() != nullptr && cell->isEmpty())
-	{
+	if (cell.get() != nullptr && cell->isEmpty()) {
 		currentCell->resetSpaceObject();
 		cell->setSpaceObject(unit);
 		currentCell = cell;

@@ -51,7 +51,7 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 				 
 				
 				
-				unit->setMover(new SimpleMover(map, map->getCell(row, col), pair<size_t, size_t> {row, col}, unit));
+				unit->setMover(new SimpleMover(map, map->getCell(row, col), Coords {row, col}, unit));
 
 				map->getCell(row, col)->setSpaceObject(unit);
 			}

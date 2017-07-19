@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
-#include <array>
 
 
 #include "Visual.h"
 #include "Map.h"
 #include "Cell.h"
+#include "unit.h"
 
 struct Visual::Impl
 {
@@ -18,19 +18,22 @@ struct Visual::Impl
 			--itHandle;
 	}
 	shared_ptr<Map> map;
+	unique_ptr<Unit, function<void(Unit*)>> hero;
 public:
 	array<HANDLE, 2> handles;
 	array<HANDLE, 2> ::iterator itHandle;
 
-	Impl()
+
+	Impl() :hero(nullptr, [](Unit* u) {})
 	{
 		
 
 	}
 
-	void setMap(shared_ptr<Map> _map)
+	void setMap(shared_ptr<Map> _map, Unit* _hero)
 	{
 		map = _map;
+		hero.reset(_hero);
 		for (auto & ihandle : handles)
 			ihandle = createBuffer();
 
@@ -58,9 +61,9 @@ Visual::~Visual()
 {
 }
 
-void Visual::setMap(shared_ptr<Map> map)
+void Visual::setMap(shared_ptr<Map> map, Unit* hero)
 {
-	impl->setMap(map);
+	impl->setMap(map, hero);
 }
 
 void Visual::printRegionIn(Region && regMap, Region && regCon)
@@ -85,4 +88,16 @@ void Visual::printRegionIn(Region && regMap, Region && regCon)
 void Visual::cleanRegion(Region && regConsole)
 {
 	clearRect(*impl->itHandle, regConsole, ' ');
+}
+
+void Visual::printMap()
+{
+	auto coord = impl->hero->getCoord();
+
+	Region regmap;
+
+	//regmap.col1 = min(0, coord.first )
+	
+
+	
 }

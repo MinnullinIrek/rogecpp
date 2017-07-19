@@ -1,5 +1,6 @@
 #pragma once
 //#include <memory>
+#include "utils.h"
 
 
 class Cell;
@@ -14,21 +15,21 @@ protected:
 
 	shared_ptr<Map>		  map;
 	shared_ptr<Cell>	  currentCell;
-	pair<size_t, size_t>  coord;
+	Coords  coord;
 	shared_ptr<Unit>	  unit;
 
 
 public:
 
 	Mover();
-	Mover(shared_ptr<Map> map, shared_ptr<Cell>	  currentCell, pair<size_t, size_t>  coord, shared_ptr<Unit> unit);
+	Mover(shared_ptr<Map> map, shared_ptr<Cell>	  currentCell, Coords  coord, shared_ptr<Unit> unit);
 	~Mover();
 
-	virtual void moveTo(pair<size_t, size_t> && coord) = 0;
+	virtual void moveTo(Coords && coord) = 0;
 	shared_ptr<Cell> getCurrentCell();
-	pair<size_t, size_t>  getCoord();
+	Coords  getCoord();
 
 protected:
-	void blinkTo(pair<size_t, size_t> &&coord);
+	void blinkTo(Coords &&coord);
 };
 

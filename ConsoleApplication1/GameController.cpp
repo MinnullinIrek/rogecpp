@@ -21,7 +21,7 @@ struct GameController::Impl
 
 		//hero = map->getCell(0, 0)->getSpaceObject();
 		visual = make_shared<Visual>();
-		visual->setMap(map);
+		visual->setMap(map, hero.get());
 	}
 
 	unique_ptr<Unit, function<void(Unit*)>> hero;

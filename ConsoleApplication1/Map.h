@@ -1,4 +1,5 @@
 #pragma once
+#include "utils.h"
 
 class Cell;
 
@@ -15,9 +16,9 @@ public:
 	~Map();
 	auto getCell(size_t row, size_t col)->shared_ptr<Cell>;
 
-	auto getCell(pair<size_t, size_t> && coord)->shared_ptr<Cell>;
+	auto getCell(Coords && coord)->shared_ptr<Cell>;
 
-	auto getCell(const pair<size_t, size_t> &coord) const ->shared_ptr<Cell> ;
+	auto getCell(const Coords &coord) const ->shared_ptr<Cell> ;
 
 };
 

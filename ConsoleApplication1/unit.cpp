@@ -30,7 +30,7 @@ void Unit::setMover(Mover* mover)
 
 auto Unit::moveTo(size_t row, size_t col) -> void
 {
-	impl->mover->moveTo(pair<size_t, size_t>{row, col});
+	impl->mover->moveTo(Coords{row, col});
 }
 
 shared_ptr<Cell> Unit::currentCell()
@@ -38,7 +38,7 @@ shared_ptr<Cell> Unit::currentCell()
 	return impl->mover->getCurrentCell();
 }
 
-pair<size_t, size_t> Unit::getCoord()
+Coords Unit::getCoord()
 {
 	return impl->mover->getCoord();
 }

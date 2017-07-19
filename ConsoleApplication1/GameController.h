@@ -1,4 +1,6 @@
 #pragma once
+#include "utils.h"
+
 class GameController
 {
 	struct Impl;

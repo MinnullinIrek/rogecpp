@@ -1,5 +1,6 @@
 #pragma once
-#include <memory>
+#include "utils.h"
+
 
 class IItem;
 
@@ -8,12 +9,12 @@ class Bag final
 private:
 	struct Items;
 	struct Impl;
-	std::unique_ptr<Impl> impl;
+	unique_ptr<Impl> impl;
 public:
 	Bag();
 	~Bag();
 	auto getSize();
 
-	auto push_back(std::shared_ptr<IItem> item) -> void;
+	auto push_back(shared_ptr<IItem> item) -> void;
 };
 

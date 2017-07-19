@@ -55,7 +55,7 @@ auto Bag::getSize()
 	return impl->items.size();
 }
 
-auto Bag::push_back(std::shared_ptr<IItem> item) -> void
+auto Bag::push_back(shared_ptr<IItem> item) -> void
 {
 	impl->items.push_back(move(item));
 }

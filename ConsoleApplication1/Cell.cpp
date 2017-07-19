@@ -8,7 +8,7 @@ struct Cell::Impl
 	shared_ptr<ISpaceObject> spceObj;
 };
 
-Cell::Cell():impl(std::make_unique<Impl>())
+Cell::Cell():impl(make_unique<Impl>())
 {
 }
 
