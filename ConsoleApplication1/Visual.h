@@ -19,6 +19,7 @@ public:
 	void setMap(shared_ptr<Map> map);
 
 	void printRegionIn(Region &&regMap, Region &&regConsole);
+	void cleanRegion(Region &&regConsole);
 
 private:
 };

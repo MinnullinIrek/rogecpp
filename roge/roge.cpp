@@ -34,30 +34,23 @@ private:
 
 #include "../ConsoleApplication1/Map.h"
 //#include "../ConsoleApplication1/Cell.h"
-#include "../ConsoleApplication1/MapCreator.h"
+#include "../ConsoleApplication1/GameController.h"
 #include "../ConsoleApplication1/Visual.h"
 int main()
 {
 	setlocale(LC_ALL, "rus");
 
-	MapCreator cr;
+	GameController g;
 
-	auto mp = cr.createMap();
-	Visual v;
-	v.setMap(mp);
-	v.printRegionIn(Region{ 0,0,10,10 }, Region{ 0, 0, 10, 10 });
+	g.run();
+	
 
 
-	shared_ptr<MyClass> mycl = make_shared<MyClass>();
-
-	weak_ptr<MyClass> wmycl;
-
-	wmycl = mycl;
-
-
-	auto h = GetStdHandle(STD_OUTPUT_HANDLE);
-	prepareConsole(h);
-	putTextToRegion(h, Region{ 1, 1, 10, 30 }, L"1 2 3 4 5 6 7 8 9 0 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50");
+	while (true) {
+		int k = _getch();
+		cout << endl << k << endl;
+	}
+	
 
 	getchar();
     return 0;

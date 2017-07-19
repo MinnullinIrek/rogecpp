@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Cell.h"
 #include "unit.h"
+#include "SimpleMover.h"
 
 struct MapCreator::Impl {
 	
@@ -12,7 +13,7 @@ struct MapCreator::Impl {
 
 	wstring mapstring = 
 		L"@                   "
-		L"  @                 "
+		L"  F                 "
 		L"                    "
 		L"                    "
 		L"   q        $       "
@@ -44,8 +45,18 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 	for (size_t row = 0; row < impl->rowCount; row++)
 		for (size_t col = 0; col < impl->colCount; col++) {
 			wchar_t ch = impl->mapstring[row * impl->colCount + col];
-			if (ch != ' ')
-			{
+			
+			if (ch == '@') {
+				shared_ptr<Unit> unit = make_shared<Unit>(ch);
+				 
+				
+				
+				unit->setMover(new SimpleMover(map, map->getCell(row, col), pair<size_t, size_t> {row, col}, unit));
+
+				map->getCell(row, col)->setSpaceObject(unit);
+			}
+			else
+			if (ch != ' ') {
 				
 				//shared_ptr<ISpaceObject> sp(new Unit('@'));
 				//shared_ptr<Unit> sp(new Unit(ch));
@@ -54,6 +65,7 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 
 				map->getCell(row, col)->setSpaceObject(make_shared<Unit>(ch));
 			}
+
 		}
 	return map;
 }

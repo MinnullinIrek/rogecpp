@@ -44,3 +44,8 @@ auto Cell::isEmpty() -> bool
 	return impl->spceObj.get() == nullptr;
 }
 
+void Cell::resetSpaceObject()
+{
+	impl->spceObj.reset();
+}
+

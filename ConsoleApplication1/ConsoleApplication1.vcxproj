@@ -137,12 +137,14 @@
   <ItemGroup>
     <ClInclude Include="Bag.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="IItem.h" />
     <ClInclude Include="IMassable.h" />
     <ClInclude Include="IMover.h" />
     <ClInclude Include="INameble.h" />
     <ClInclude Include="IProperty.h" />
     <ClInclude Include="ISpaceObject.h" />
+    <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapCreator.h" />
     <ClInclude Include="Mover.h" />
@@ -157,10 +159,12 @@
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="IItem.cpp" />
     <ClCompile Include="INameble.cpp" />
     <ClCompile Include="IProperty.cpp" />
     <ClCompile Include="ISpaceObject.cpp" />
+    <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapCreator.cpp" />
     <ClCompile Include="Mover.cpp" />

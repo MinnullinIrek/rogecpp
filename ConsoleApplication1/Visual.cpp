@@ -36,7 +36,7 @@ public:
 
 		itHandle = handles.begin();
 		setActiveBuffer(*itHandle);
-
+		itHandle++;
 	}
 
 	
@@ -65,6 +65,7 @@ void Visual::setMap(shared_ptr<Map> map)
 
 void Visual::printRegionIn(Region && regMap, Region && regCon)
 {
+	cleanRegion(Region(regCon));
 	for (auto irow = 0; irow <= regMap.row2 - regMap.row1; irow++) {
 		auto mapRow = regMap.row1 + irow;
 		auto conRow = regCon.row1 + irow;
@@ -77,4 +78,11 @@ void Visual::printRegionIn(Region && regMap, Region && regCon)
 			impl->printCellIn(impl->map->getCell(mapRow, mapCol), conRow, conCol);
 		}
 	}
+
+	impl->changeBuffer();	
+}
+
+void Visual::cleanRegion(Region && regConsole)
+{
+	clearRect(*impl->itHandle, regConsole, ' ');
 }

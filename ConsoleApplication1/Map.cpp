@@ -36,28 +36,27 @@ struct Map::Cells
 
 
 
-	auto getCell(size_t row, size_t col)
+	auto getCell(size_t row, size_t col)-> shared_ptr<Cell>
 	{
 		return cells.at(std::pair<size_t, size_t>(row, col));
 	}
 
-	auto operator()(size_t row, size_t col)
+	auto operator()(size_t row, size_t col)-> shared_ptr<Cell>
 	{
 		return getCell(row, col);
 	}
 
-	auto operator()(pair<size_t, size_t> && coord)
+	auto operator()(pair<size_t, size_t> && coord)-> shared_ptr<Cell>
 	{
-		return cells.at(coord);
+		return cells[(coord)];
 	}
 
-	template<typename T>
-	auto operator()(T && coord)
+	auto operator()(const pair<size_t, size_t> & coord)-> shared_ptr<Cell>
 	{
-		return cells.at(coord);
+		return cells[coord];
 	}
 
-	auto operator [](std::pair<size_t, size_t>&& coords)
+	auto operator [](std::pair<size_t, size_t>&& coords)-> shared_ptr<Cell>
 	{
 		return getCell(coords.first, coords.second);
 	}

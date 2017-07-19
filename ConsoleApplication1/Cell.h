@@ -16,7 +16,7 @@ public:
 	operator wchar_t();
 	auto getChar() -> wchar_t;
 	auto isEmpty() -> bool;
-
+	void resetSpaceObject();
 
 };
 

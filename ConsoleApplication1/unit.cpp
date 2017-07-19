@@ -23,9 +23,24 @@ wchar_t Unit::getChar()
 	return impl->name.ch;
 }
 
-void Unit::setMover(unique_ptr<Mover> mover)
+void Unit::setMover(Mover* mover)
 {
-	impl->mover.reset(mover.get());
+	impl->mover.reset(mover);
+}
+
+auto Unit::moveTo(size_t row, size_t col) -> void
+{
+	impl->mover->moveTo(pair<size_t, size_t>{row, col});
+}
+
+shared_ptr<Cell> Unit::currentCell()
+{
+	return impl->mover->getCurrentCell();
+}
+
+pair<size_t, size_t> Unit::getCoord()
+{
+	return impl->mover->getCoord();
 }
 
 Unit::Unit(wchar_t ch):impl(make_unique<Impl>())
