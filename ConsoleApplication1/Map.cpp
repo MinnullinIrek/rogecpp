@@ -8,12 +8,9 @@
 #include "Cell.h"
 
 
-typedef Coords CoordPair;
+//typedef Coords Coords;
 
-//struct Map::Impl
-//{
-//
-//};
+
 
 
 struct Map::Cells
@@ -22,46 +19,56 @@ struct Map::Cells
 	{
 		for (size_t row = 0; row < colCount; row++) {
 			for (size_t col = 0; col < colCount; col++) {
-				cells[Coords(row, col)] = make_shared<Cell>();
+				//cells[Coords{ row, col }] = make_shared<Cell>();
 			}
 		}
 	}
 
 	~Cells() {}
 
-	function<bool(const CoordPair&, const CoordPair&)> equaler = [](const CoordPair& lhs, const CoordPair& rhs) { return lhs.first == rhs.first && lhs.second == rhs.second; };
-	function<size_t(const CoordPair&)> hasher = [this](const CoordPair& coord) { return this->colCount*coord.first + coord.second; };
+	function<bool(const Coords&, const Coords&)> equaler = [](const Coords& lhs, const Coords& rhs) { return lhs.row == rhs.row && lhs.col == rhs.col; };
+	function<size_t(const Coords&)> hasher = [this](const Coords& coord) { return this->colCount*coord.row + coord.col; };
 	typedef unordered_map < Coords, shared_ptr<Cell>, decltype(hasher), decltype(equaler) > CellMap;
 
-
-
-
-	auto getCell(size_t row, size_t col)-> shared_ptr<Cell>
+	template<typename T>
+	auto getCell(T &&coord, bool isCreateble)-> shared_ptr<Cell>
 	{
-		return cells.at(Coords(row, col));
+		shared_ptr<Cell> cell = cells[coord];
+		if (isCreateble && !cell)
+			cell.reset(new Cell());
+
+		return cell;
 	}
 
-	auto operator()(size_t row, size_t col)-> shared_ptr<Cell>
+	auto operator()(size_t row, size_t col, bool isCreateble)-> shared_ptr<Cell>
 	{
-		return getCell(row, col);
+		return getCell(Coords{ row, col }, isCreateble);
 	}
 
-	auto operator()(Coords && coord)-> shared_ptr<Cell>
+	//auto operator()(Coords && coord)-> shared_ptr<Cell>
+	//{
+	//	return cells[(coord)];
+	//}
+
+	template<typename T>
+	auto operator()(T && coord, bool isCreateble)-> shared_ptr<Cell>
 	{
-		return cells[(coord)];
+		return getCell(forward<T>(coord), isCreateble);
 	}
 
-	auto operator()(const Coords & coord)-> shared_ptr<Cell>
-	{
-		return cells[coord];
-	}
+	//auto operator()(const Coords & coord)-> shared_ptr<Cell>
+	//{
+	//	return cells[coord];
+	//}
 
-	auto operator [](Coords&& coords)-> shared_ptr<Cell>
-	{
-		return getCell(coords.first, coords.second);
-	}
 
-private:
+
+	//auto operator [](Coords&& coords)-> shared_ptr<Cell>
+	//{
+	//	return getCell(coords.row, coords.col);
+	//}
+
+public:
 
 
 	const size_t	rowCount = 0;
@@ -93,14 +100,19 @@ auto Map::getCell(size_t row, size_t col) -> shared_ptr<Cell>
 	return impl->cells(row, col);
 }
 
-auto Map::getCell(Coords&& coord) -> shared_ptr<Cell>
+auto Map::getCell(Coords&& coord, bool isCreatable) -> shared_ptr<Cell>
 {
-	return impl->cells(move(coord));
+	return impl->cells(move(coord), isCreatable);
 }
 
-auto Map::getCell(const Coords& coord) const -> shared_ptr<Cell>
+auto Map::getCell(const Coords& coord, bool isCreatable) const -> shared_ptr<Cell>
 {
-	return impl->cells(coord);
+	return impl->cells(coord, isCreatable);
+}
+
+auto Map::getSize() const -> Coords
+{
+	return Coords{ impl->cells.rowCount, impl->cells.colCount};
 }
 
 

@@ -30,7 +30,7 @@ Coords Mover::getCoord()
 
 void Mover::blinkTo(Coords &&cord)
 {
-	auto cell = map->getCell(Coords(cord));
+	auto cell = map->getCell(Coords(cord), true);
 	
 	if (cell.get() != nullptr && cell->isEmpty()) {
 		currentCell->resetSpaceObject();

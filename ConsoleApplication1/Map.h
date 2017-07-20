@@ -16,9 +16,11 @@ public:
 	~Map();
 	auto getCell(size_t row, size_t col)->shared_ptr<Cell>;
 
-	auto getCell(Coords && coord)->shared_ptr<Cell>;
+	auto getCell(Coords && coord, bool isCreatable)->shared_ptr<Cell>;
 
-	auto getCell(const Coords &coord) const ->shared_ptr<Cell> ;
+	auto getCell(const Coords &coord, bool isCreatable) const ->shared_ptr<Cell> ;
+
+	auto getSize() const->Coords;
 
 };
 

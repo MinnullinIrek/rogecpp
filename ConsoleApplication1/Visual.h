@@ -7,15 +7,24 @@
 class Map;
 class Unit;
 
+//typedef pair<Coords, Coords> MapReg;
+class MapReg
+{
+public:
+	struct
+	{
+		size_t row, col;
+	}topLeft, bottomRight;
+
+};
+
 class Visual
 {
 	struct Impl;
 
 	unique_ptr<Impl> impl;
 
-	const size_t sizeRow = 10;
-	const size_t sizeCol = 10;
-
+	
 public:
 
 	Visual();
@@ -23,9 +32,14 @@ public:
 
 	void setMap(shared_ptr<Map> map, Unit* hero);
 
-	void printRegionIn(Region &&regMap, Region &&regConsole);
+	void printRegionIn(MapReg &&regMap, Region &&regConsole);
 	void cleanRegion(Region &&regConsole);
 	void printMap();
 private:
+
+	bool isInRegion(const Coords &coords);
+	MapReg getRegMapForPrint();
+	void printBorder(const Region &rg) const;
+
 };
 

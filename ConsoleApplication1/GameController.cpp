@@ -47,35 +47,36 @@ void GameController::run()
 
 	while (act != Action::esc)
 	{
-		impl->visual->printRegionIn(Region{ 0, 0, 10, 10 }, Region{ 0,0,10,10 });
+		//impl->visual->printRegionIn(Region{ 0, 0, 10, 10 }, Region{ 0,0,10,10 });
+		impl->visual->printMap();
 		auto coord = impl->hero->getCoord();
 		act = KeyBoardController::getCh();
 
 		switch (act)
 		{
 		case Action::up:
-			impl->hero->moveTo(coord.first - 1, coord.second);
+			impl->hero->moveTo(coord.row - 1, coord.col);
 			break;
 		case Action::down:
-			impl->hero->moveTo(coord.first + 1, coord.second);
+			impl->hero->moveTo(coord.row + 1, coord.col);
 			break;
 		case Action::left:
-			impl->hero->moveTo(coord.first , coord.second - 1);
+			impl->hero->moveTo(coord.row , coord.col - 1);
 			break;
 		case Action::right:
-			impl->hero->moveTo(coord.first, coord.second+1);
+			impl->hero->moveTo(coord.row, coord.col+1);
 			break;
 		case Action::upLeft:
-			impl->hero->moveTo(coord.first - 1, coord.second-1);
+			impl->hero->moveTo(coord.row - 1, coord.col-1);
 			break;
 		case Action::upRight:
-			impl->hero->moveTo(coord.first - 1, coord.second+1);
+			impl->hero->moveTo(coord.row - 1, coord.col+1);
 			break;
 		case Action::downLeft:
-			impl->hero->moveTo(coord.first + 1, coord.second-1);
+			impl->hero->moveTo(coord.row + 1, coord.col-1);
 			break;
 		case Action::downRight:
-			impl->hero->moveTo(coord.first + 1, coord.second+1);
+			impl->hero->moveTo(coord.row + 1, coord.col+1);
 			break;
 		case Action::esc:
 			break;
