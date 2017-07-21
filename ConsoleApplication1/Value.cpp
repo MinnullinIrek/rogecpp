@@ -12,7 +12,7 @@ struct Value::Impl
 
 };
 
-Value::Value():impl(make_unique<Impl>(0))
+Value::Value() :impl(make_unique<Impl>(0))
 {
 }
 
@@ -54,29 +54,29 @@ void Value::setWatcher(function<void(double)>& watcher)
 	impl->watchers.push_back(watcher);
 }
 
- const Value& operator+(const Value & left, const Value & right)
+const Value& operator+(const Value & left, const Value & right)
 {
-	return Value (left.impl->val + right.impl->val);
+	return move(Value(left.impl->val + right.impl->val));
 }
 
- const Value & operator-(const Value & left, const Value & right)
- {
-	 return Value(left.impl->val + right.impl->val);
- }
+const Value & operator-(const Value & left, const Value & right)
+{
+	return move(Value(left.impl->val + right.impl->val));
+}
 
- bool operator==(const Value & left, const Value & right)
- {
-	 return left.impl->val == right.impl->val;
- }
+bool operator==(const Value & left, const Value & right)
+{
+	return left.impl->val == right.impl->val;
+}
 
- Value & operator+=(Value & left, const Value & right)
- {
-	 left.setValue(left.impl->val + right.impl->val);
-	 return left;
- }
+Value & operator+=(Value & left, const Value & right)
+{
+	left.setValue(left.impl->val + right.impl->val);
+	return left;
+}
 
- Value & operator-=(Value & left, const Value & right)
- {
-	 left.setValue(left.impl->val + right.impl->val);
-	 return left;
- }
+Value & operator-=(Value & left, const Value & right)
+{
+	left.setValue(left.impl->val + right.impl->val);
+	return left;
+}

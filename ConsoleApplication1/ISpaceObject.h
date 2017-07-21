@@ -1,5 +1,5 @@
 #pragma once
-class ISpaceObject 
+class ISpaceObject
 {
 public:
 	ISpaceObject();

@@ -12,7 +12,7 @@ public:
 	MapCreator();
 	~MapCreator();
 
-	auto createMap()  -> shared_ptr<Map>;
+	auto createMap()->shared_ptr<Map>;
 
 };
 

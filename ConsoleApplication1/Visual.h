@@ -24,7 +24,7 @@ class Visual
 
 	unique_ptr<Impl> impl;
 
-	
+
 public:
 
 	Visual();

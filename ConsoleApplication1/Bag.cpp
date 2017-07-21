@@ -8,7 +8,7 @@ struct Bag::Items : protected vector<shared_ptr<IItem>>
 {
 	Items()
 	{
-		
+
 	}
 
 	auto getItem(size_t i) -> shared_ptr<IItem>

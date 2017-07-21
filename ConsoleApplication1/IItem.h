@@ -4,8 +4,8 @@
 class IItem abstract
 {
 protected:
-	
-	
+
+
 public:
 	IItem();
 };

@@ -17,7 +17,7 @@ shared_ptr<Unit> UnitCreator::createUnit(wchar_t ch)
 {
 	auto unit = make_shared<Unit>(ch);
 	unit->initParams();
-	
+
 	try
 	{
 		unit->getParam(L"hp") = 10;

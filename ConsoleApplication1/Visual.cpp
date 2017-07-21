@@ -30,7 +30,7 @@ public:
 
 	Impl() :hero(nullptr, [](Unit* u) {})
 	{
-		
+
 
 	}
 
@@ -46,17 +46,17 @@ public:
 		itHandle++;
 	}
 
-	
+
 
 	auto printCellIn(shared_ptr<Cell> cell, short conRow, short conCol)
 	{
-		putChar(*itHandle, COORD{conCol, conRow}, (cell)?cell->getChar():' ', Color::White, Color::Black);
+		putChar(*itHandle, COORD{ conCol, conRow }, (cell) ? cell->getChar() : ' ', Color::White, Color::Black);
 	}
 
 };
 
 
-Visual::Visual():impl(make_unique<Impl>())
+Visual::Visual() :impl(make_unique<Impl>())
 {
 }
 
@@ -86,7 +86,7 @@ void Visual::printRegionIn(MapReg && regMap, Region && regCon)
 		}
 	}
 
-	impl->changeBuffer();	
+	impl->changeBuffer();
 }
 
 void Visual::cleanRegion(Region && regConsole)
@@ -115,26 +115,26 @@ MapReg Visual::getRegMapForPrint()
 	MapReg regmap;
 	auto coord = impl->hero->getCoord();
 	auto mapSize = impl->map->getSize();
-	
+
 	auto cr = coord.row - impl->sizeRow / 2;
 
-	auto func = [](size_t cr, size_t &wher, size_t comp,  size_t what) { wher = (cr > 0 && cr < comp) ? cr : what; };
+	auto func = [](size_t cr, size_t &wher, size_t comp, size_t what) { wher = (cr > 0 && cr < comp) ? cr : what; };
 
 	func(coord.row - impl->sizeRow / 2, regmap.topLeft.row, mapSize.row, 0);
 	func(coord.col - impl->sizeCol / 2, regmap.topLeft.col, mapSize.col, 0);
 	func(coord.row + impl->sizeRow / 2, regmap.bottomRight.row, mapSize.row, mapSize.row);
 	func(coord.col + impl->sizeCol / 2, regmap.bottomRight.col, mapSize.col, mapSize.col);
-	
+
 	if (regmap.topLeft.row == 0)
-		regmap.bottomRight.row = min(mapSize.row -1, impl->sizeRow -1);
+		regmap.bottomRight.row = min(mapSize.row - 1, impl->sizeRow - 1);
 
 
 	if (regmap.topLeft.col == 0)
-		regmap.bottomRight.col = min(mapSize.col-1, impl->sizeCol -1);
+		regmap.bottomRight.col = min(mapSize.col - 1, impl->sizeCol - 1);
 
 
 	if (regmap.bottomRight.row == mapSize.row - 1)
-		regmap.topLeft.row = min(0, regmap.bottomRight.row - impl->sizeRow+1);
+		regmap.topLeft.row = min(0, regmap.bottomRight.row - impl->sizeRow + 1);
 
 
 	if (regmap.bottomRight.col == mapSize.row - 1)
@@ -152,14 +152,14 @@ void Visual::printBorder(const Region &rg) const
 
 void Visual::printParams()
 {
-	static const array<const wstring, 2> paramKeys = {L"hp", L"attack"};
+	static const array<const wstring, 2> paramKeys = { L"hp", L"attack" };
 	short i = 0;
 	for (auto& key : paramKeys)
 	{
-		putChar(*impl->itHandle, COORD{ 20, 5 + i ++ }, key + (L":") + std::to_wstring(static_cast<double>(impl->hero->getParam(key))), Color::White, Color::Black);
+		putChar(*impl->itHandle, COORD{ 20, 5 + i++ }, key + (L":") + std::to_wstring(static_cast<double>(impl->hero->getParam(key))), Color::White, Color::Black);
 
 
 	}
-	
+
 
 }

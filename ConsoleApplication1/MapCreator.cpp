@@ -9,11 +9,11 @@
 #include "Value.h"
 
 struct MapCreator::Impl {
-	
+
 	size_t rowCount = 12;
 	size_t colCount = 20;
 
-	wstring mapstring = 
+	wstring mapstring =
 		L"@                   "
 		L"  F                 "
 		L"                    "
@@ -31,7 +31,7 @@ struct MapCreator::Impl {
 
 };
 
-MapCreator::MapCreator():impl(make_unique<Impl>())
+MapCreator::MapCreator() :impl(make_unique<Impl>())
 {
 }
 
@@ -47,26 +47,20 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 	for (size_t row = 0; row < impl->rowCount; row++)
 		for (size_t col = 0; col < impl->colCount; col++) {
 			wchar_t ch = impl->mapstring[row * impl->colCount + col];
-			
+
 			if (ch == '@') {
 				auto unit = UnitCreator::createUnit(ch);
-				
-				unit->setMover(new SimpleMover(map, map->getCell(row, col,true), Coords {row, col}, unit));
 
-				
+				unit->setMover(new SimpleMover(map, map->getCell(row, col, true), Coords{ row, col }, unit));
+
+
 
 				map->getCell(row, col, true)->setSpaceObject(unit);
 			}
 			else
-			if (ch != ' ') {
-				
-				//shared_ptr<ISpaceObject> sp(new Unit('@'));
-				//shared_ptr<Unit> sp(new Unit(ch));
-				//shared_ptr<ISpaceObject> sp2(sp);
-
-
-				map->getCell(row, col, true)->setSpaceObject(UnitCreator::createUnit(ch));
-			}
+				if (ch != ' ') {
+					map->getCell(row, col, true)->setSpaceObject(UnitCreator::createUnit(ch));
+				}
 
 		}
 	return map;

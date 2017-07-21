@@ -158,7 +158,6 @@
     <ClInclude Include="utils.h" />
     <ClInclude Include="Value.h" />
     <ClInclude Include="Visual.h" />
-    <ClInclude Include="Visualizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
@@ -185,7 +184,6 @@
     <ClCompile Include="UnitCreator.cpp" />
     <ClCompile Include="Value.cpp" />
     <ClCompile Include="Visual.cpp" />
-    <ClCompile Include="Visualizer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,7 +8,7 @@ struct Cell::Impl
 	shared_ptr<ISpaceObject> spceObj;
 };
 
-Cell::Cell():impl(make_unique<Impl>())
+Cell::Cell() :impl(make_unique<Impl>())
 {
 }
 
@@ -17,7 +17,7 @@ Cell::~Cell()
 {
 }
 
-auto Cell::setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void 
+auto Cell::setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void
 {
 	impl->spceObj = spaceObject;
 }

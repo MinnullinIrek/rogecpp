@@ -1,5 +1,4 @@
 #pragma once
-//#include <memory>
 #include "utils.h"
 
 
@@ -7,22 +6,17 @@ class Cell;
 class Unit;
 class Map;
 
-using namespace std;
 class Mover
 {
 	friend Unit;
 protected:
 
-	shared_ptr<Map>		  map;
-	shared_ptr<Cell>	  currentCell;
-	Coords  coord;
-	shared_ptr<Unit>	  unit;
-
-
+	struct Impl;
+	unique_ptr<Impl> impl;
 public:
 
 	Mover();
-	Mover(shared_ptr<Map> map, shared_ptr<Cell>	  currentCell, Coords  coord, shared_ptr<Unit> unit);
+	Mover(shared_ptr<Map> map, shared_ptr<Cell>	  currentCell, const Coords  &coord, shared_ptr<Unit> unit);
 	~Mover();
 
 	virtual void moveTo(Coords && coord) = 0;

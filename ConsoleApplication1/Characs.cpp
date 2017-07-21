@@ -15,7 +15,7 @@ void Characs::initCharacs()
 	impl->values[L"attack"] = 0;
 }
 
-Characs::Characs():impl(make_unique<Impl>())
+Characs::Characs() :impl(make_unique<Impl>())
 {
 	initCharacs();
 }

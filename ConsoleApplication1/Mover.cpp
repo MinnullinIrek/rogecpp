@@ -4,12 +4,21 @@
 #include "Cell.h"
 #include "unit.h"
 
+struct Mover::Impl
+{
+	Impl(shared_ptr<Map> map, shared_ptr<Cell> currentCell, Coords coord, shared_ptr<Unit> unit) :map(map), currentCell(currentCell), coord(coord), unit(unit)
+	{}
+	shared_ptr<Map>		  map;
+	shared_ptr<Cell>	  currentCell;
+	Coords  coord;
+	shared_ptr<Unit>	  unit;
+};
+
 Mover::Mover()
 {
 }
 
-Mover::Mover(shared_ptr<Map> map, shared_ptr<Cell> currentCell, Coords coord, shared_ptr<Unit> unit):
-	map(map), currentCell(currentCell), coord(coord), unit(unit)
+Mover::Mover(shared_ptr<Map> map, shared_ptr<Cell> currentCell, const Coords &coord, shared_ptr<Unit> unit) : impl(make_unique<Impl>(map, currentCell, coord, unit))
 {
 }
 
@@ -20,23 +29,23 @@ Mover::~Mover()
 
 shared_ptr<Cell> Mover::getCurrentCell()
 {
-	return currentCell;
+	return impl->currentCell;
 }
 
 Coords Mover::getCoord()
 {
-	return coord;
+	return impl->coord;
 }
 
 void Mover::blinkTo(Coords &&cord)
 {
-	auto cell = map->getCell(Coords(cord), true);
-	
+	auto cell = impl->map->getCell(Coords(cord), true);
+
 	if (cell.get() != nullptr && cell->isEmpty()) {
-		currentCell->resetSpaceObject();
-		cell->setSpaceObject(unit);
-		currentCell = cell;
-		this->coord = cord;
+		impl->currentCell->resetSpaceObject();
+		cell->setSpaceObject(impl->unit);
+		impl->currentCell = cell;
+		impl->coord = cord;
 	}
 }
 

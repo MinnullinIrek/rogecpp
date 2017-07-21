@@ -25,6 +25,15 @@
     <Filter Include="Заголовочные файлы\mover">
       <UniqueIdentifier>{bd998127-11b5-4e47-b558-7394d5b0f45f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\utils">
+      <UniqueIdentifier>{299a653b-c3f3-400d-98cf-8f1d7ff17bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\items">
+      <UniqueIdentifier>{3b86b198-640d-4c37-a690-b198ac81e62e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Maps">
+      <UniqueIdentifier>{fcbee7ae-b890-42aa-839f-d33996fb1f85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -36,24 +45,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="ISpaceObject.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Bag.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="IItem.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="SomeItem.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="INameble.h">
       <Filter>Заголовочные файлы\property</Filter>
     </ClInclude>
@@ -63,25 +54,10 @@
     <ClInclude Include="IProperty.h">
       <Filter>Заголовочные файлы\property</Filter>
     </ClInclude>
-    <ClInclude Include="unit.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Visualizer.h">
-      <Filter>Заголовочные файлы\visulizer</Filter>
-    </ClInclude>
     <ClInclude Include="IMover.h">
       <Filter>Заголовочные файлы\property</Filter>
     </ClInclude>
-    <ClInclude Include="Mover.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Visual.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="MapCreator.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleMover.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="KeyBoardController.h">
@@ -93,14 +69,44 @@
     <ClInclude Include="utils.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Characs.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Value.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="UnitCreator.h">
       <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Visual.h">
+      <Filter>Заголовочные файлы\visulizer</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.h">
+      <Filter>Заголовочные файлы\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>Заголовочные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="Mover.h">
+      <Filter>Заголовочные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="Bag.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Characs.h">
+      <Filter>Заголовочные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpaceObject.h">
+      <Filter>Заголовочные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Заголовочные файлы\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="IItem.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Заголовочные файлы\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMover.h">
+      <Filter>Заголовочные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="SomeItem.h">
+      <Filter>Заголовочные файлы\items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +138,6 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="unit.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="Visualizer.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="Mover.cpp">

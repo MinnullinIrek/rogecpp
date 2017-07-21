@@ -22,9 +22,9 @@ Action KeyBoardController::getCh()
 	if (key == static_cast<int>(Direction::arrow) || key == static_cast<int>(Direction::arrow0)) {
 		key = _getch();
 	}
-	
+
 	Action a = Action::wait;
-	
+
 	switch (key)
 	{
 	case static_cast<int>(Direction::left) :
@@ -33,7 +33,7 @@ Action KeyBoardController::getCh()
 	case static_cast<int>(Direction::right) :
 		a = Action::right;
 		break;
-	case static_cast<int>(Direction::up):
+	case static_cast<int>(Direction::up) :
 		a = Action::up;
 		break;
 	case static_cast<int>(Direction::down) :
@@ -51,7 +51,7 @@ Action KeyBoardController::getCh()
 	case static_cast<int>(Direction::pgDn) :
 		a = Action::downRight;
 		break;
-		default:
+	default:
 		break;
 	}
 	return a;

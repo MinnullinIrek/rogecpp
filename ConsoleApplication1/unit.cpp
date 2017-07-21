@@ -15,7 +15,7 @@ wstring Unit::getName(Type t)
 	return impl->name.name_descr[t];
 }
 
-void Unit::setName(wstring&& nm, Type t )
+void Unit::setName(wstring&& nm, Type t)
 {
 	impl->name.name_descr[t] = nm;
 }
@@ -32,7 +32,8 @@ void Unit::setMover(Mover* mover)
 
 auto Unit::moveTo(size_t row, size_t col) -> void
 {
-	impl->mover->moveTo(Coords{row, col});
+	if (impl->mover)
+		impl->mover->moveTo(Coords{ row, col });
 }
 
 shared_ptr<Cell> Unit::currentCell()
@@ -55,7 +56,7 @@ void Unit::initParams()
 	impl->chars.reset(new Characs());
 }
 
-Unit::Unit(wchar_t ch):impl(make_unique<Impl>())
+Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())
 {
 	impl->name.ch = ch;
 }

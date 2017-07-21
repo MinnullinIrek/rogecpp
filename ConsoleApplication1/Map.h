@@ -18,7 +18,7 @@ public:
 
 	auto getCell(Coords && coord, bool isCreatable)->shared_ptr<Cell>;
 
-	auto getCell(const Coords &coord, bool isCreatable) const ->shared_ptr<Cell> ;
+	auto getCell(const Coords &coord, bool isCreatable) const->shared_ptr<Cell>;
 
 	auto getSize() const->Coords;
 

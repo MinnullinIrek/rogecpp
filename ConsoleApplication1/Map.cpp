@@ -84,14 +84,14 @@ public:
 
 struct Map::Impl
 {
-	Impl(size_t rowCount, size_t colCount):cells(rowCount, colCount){}
+	Impl(size_t rowCount, size_t colCount) :cells(rowCount, colCount) {}
 
 	~Impl() {}
 	Cells cells;
 };
 
 
-Map::Map(size_t rowCount, size_t colCount):impl(make_unique<Impl>(rowCount, colCount))
+Map::Map(size_t rowCount, size_t colCount) :impl(make_unique<Impl>(rowCount, colCount))
 {
 
 }
@@ -118,7 +118,7 @@ auto Map::getCell(const Coords& coord, bool isCreatable) const -> shared_ptr<Cel
 
 auto Map::getSize() const -> Coords
 {
-	return Coords{ impl->cells.rowCount, impl->cells.colCount};
+	return Coords{ impl->cells.rowCount, impl->cells.colCount };
 }
 
 
