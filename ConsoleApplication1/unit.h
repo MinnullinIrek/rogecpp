@@ -6,9 +6,13 @@
 
 class Mover;
 class Cell;
+class Value;
+//class UnitCreator;
 
 class Unit  : public ISpaceObject , public INameble, public IMover
 {
+protected:
+	friend class UnitCreator;
 	struct Impl;
 
 	unique_ptr<Impl> impl;
@@ -26,7 +30,8 @@ public:
 	virtual auto moveTo(size_t row, size_t col) -> void override;
 	shared_ptr<Cell> currentCell();
 	Coords getCoord();
-
+	Value &getParam(const wstring & param);
+	void initParams();
 
 };
 

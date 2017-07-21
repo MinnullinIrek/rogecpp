@@ -1,11 +1,12 @@
 #include "stdafx.h"
-
+#include <array>
 
 
 #include "Visual.h"
 #include "Map.h"
 #include "Cell.h"
 #include "unit.h"
+#include "Value.h"
 
 struct Visual::Impl
 {
@@ -95,20 +96,12 @@ void Visual::cleanRegion(Region && regConsole)
 
 void Visual::printMap()
 {
-	
 
-
+	printParams();
 
 	MapReg regmap = getRegMapForPrint();
 	printBorder(Region{ 0,0, 12, 12 });
 	printRegionIn(move(regmap), Region{ 1,1, 11, 11 });
-	
-
-	
-	
-
-
-	
 }
 
 bool Visual::isInRegion(const Coords &coords)
@@ -155,4 +148,18 @@ MapReg Visual::getRegMapForPrint()
 void Visual::printBorder(const Region &rg) const
 {
 	printRegion(*impl->itHandle, rg, Color::White, Color::Black);
+}
+
+void Visual::printParams()
+{
+	static const array<const wstring, 2> paramKeys = {L"hp", L"attack"};
+	short i = 0;
+	for (auto& key : paramKeys)
+	{
+		putChar(*impl->itHandle, COORD{ 20, 5 + i ++ }, key + (L":") + std::to_wstring(static_cast<double>(impl->hero->getParam(key))), Color::White, Color::Black);
+
+
+	}
+	
+
 }

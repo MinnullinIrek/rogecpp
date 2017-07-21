@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "Unit.h"
 #include "Mover.h"
+#include "Characs.h"
 
 struct Unit::Impl
 {
 	Name name;
 	unique_ptr<Mover> mover;
+	unique_ptr<Characs> chars;
 };
 
 wstring Unit::getName(Type t)
@@ -41,6 +43,16 @@ shared_ptr<Cell> Unit::currentCell()
 Coords Unit::getCoord()
 {
 	return impl->mover->getCoord();
+}
+
+Value & Unit::getParam(const wstring& param)
+{
+	return impl->chars->getChar(param);
+}
+
+void Unit::initParams()
+{
+	impl->chars.reset(new Characs());
 }
 
 Unit::Unit(wchar_t ch):impl(make_unique<Impl>())

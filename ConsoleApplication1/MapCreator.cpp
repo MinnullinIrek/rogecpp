@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #include "MapCreator.h"
+#include "UnitCreator.h"
 
 #include "Map.h"
 #include "Cell.h"
 #include "unit.h"
 #include "SimpleMover.h"
+#include "Value.h"
 
 struct MapCreator::Impl {
 	
@@ -47,11 +49,11 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 			wchar_t ch = impl->mapstring[row * impl->colCount + col];
 			
 			if (ch == '@') {
-				shared_ptr<Unit> unit = make_shared<Unit>(ch);
-				 
-				
+				auto unit = UnitCreator::createUnit(ch);
 				
 				unit->setMover(new SimpleMover(map, map->getCell(row, col,true), Coords {row, col}, unit));
+
+				
 
 				map->getCell(row, col, true)->setSpaceObject(unit);
 			}
@@ -63,7 +65,7 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 				//shared_ptr<ISpaceObject> sp2(sp);
 
 
-				map->getCell(row, col, true)->setSpaceObject(make_shared<Unit>(ch));
+				map->getCell(row, col, true)->setSpaceObject(UnitCreator::createUnit(ch));
 			}
 
 		}

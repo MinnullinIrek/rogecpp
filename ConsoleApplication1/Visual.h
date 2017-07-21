@@ -41,5 +41,7 @@ private:
 	MapReg getRegMapForPrint();
 	void printBorder(const Region &rg) const;
 
+	void printParams();
+
 };
 
