@@ -51,9 +51,9 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 				 
 				
 				
-				unit->setMover(new SimpleMover(map, map->getCell(row, col), Coords {row, col}, unit));
+				unit->setMover(new SimpleMover(map, map->getCell(row, col,true), Coords {row, col}, unit));
 
-				map->getCell(row, col)->setSpaceObject(unit);
+				map->getCell(row, col, true)->setSpaceObject(unit);
 			}
 			else
 			if (ch != ' ') {
@@ -63,7 +63,7 @@ auto MapCreator::createMap()-> shared_ptr<Map>
 				//shared_ptr<ISpaceObject> sp2(sp);
 
 
-				map->getCell(row, col)->setSpaceObject(make_shared<Unit>(ch));
+				map->getCell(row, col, true)->setSpaceObject(make_shared<Unit>(ch));
 			}
 
 		}

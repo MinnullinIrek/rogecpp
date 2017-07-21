@@ -17,7 +17,7 @@ struct GameController::Impl
 		map = m.createMap();
 		//shared_ptr<ISpaceObject> sp = map->getCell(0, 0)->getSpaceObject();
 		auto del = [](Unit*unit) {};
-		hero = unique_ptr<Unit, decltype(del)>( (Unit*)map->getCell(0, 0)->getSpaceObject().get(), del );
+		hero = unique_ptr<Unit, decltype(del)>( (Unit*)map->getCell(0, 0, false)->getSpaceObject().get(), del );
 
 		//hero = map->getCell(0, 0)->getSpaceObject();
 		visual = make_shared<Visual>();

@@ -49,7 +49,7 @@ public:
 
 	auto printCellIn(shared_ptr<Cell> cell, short conRow, short conCol)
 	{
-		putChar(*itHandle, COORD{conCol, conRow}, cell->getChar(), Color::White, Color::Black);
+		putChar(*itHandle, COORD{conCol, conRow}, (cell)?cell->getChar():' ', Color::White, Color::Black);
 	}
 
 };
@@ -72,16 +72,16 @@ void Visual::setMap(shared_ptr<Map> map, Unit* hero)
 void Visual::printRegionIn(MapReg && regMap, Region && regCon)
 {
 	cleanRegion(Region(regCon));
-	for (auto irow = 0; irow <= regMap.bottomRight.row - regMap.topLeft.row; irow++) {
+	for (size_t irow = 0; irow <= regMap.bottomRight.row - regMap.topLeft.row; irow++) {
 		auto mapRow = regMap.topLeft.row + irow;
 		auto conRow = regCon.row1 + irow;
-		for (auto icol = 0; icol <= regMap.bottomRight.col - regMap.topLeft.col; icol++) {
+		for (size_t icol = 0; icol <= regMap.bottomRight.col - regMap.topLeft.col; icol++) {
 			size_t mapCol = regMap.topLeft.col + icol;
 			size_t conCol = regCon.col1 + icol;
-			if (mapCol >= regMap.bottomRight.col || conCol >= regCon.col2)
+			if (mapCol >= regMap.bottomRight.col || conCol >= (size_t)regCon.col2)
 				break;
 
-			impl->printCellIn(impl->map->getCell(mapRow, mapCol), (short)conRow, (short)conCol);
+			impl->printCellIn(impl->map->getCell(mapRow, mapCol, false), (short)conRow, (short)conCol);
 		}
 	}
 

@@ -15,6 +15,12 @@
 
 struct Map::Cells
 {
+	template <typename T>
+	bool coordInMap(T &&coord)
+	{
+		return coord.row >= 0 && coord.col >= 0 && coord.row < rowCount && coord.col <= colCount;
+	}
+
 	Cells(size_t rowCount, size_t colCount) : rowCount(rowCount), colCount(colCount), cells((rowCount + 1)*(colCount + 1), hasher, equaler)
 	{
 		for (size_t row = 0; row < colCount; row++) {
@@ -33,8 +39,8 @@ struct Map::Cells
 	template<typename T>
 	auto getCell(T &&coord, bool isCreateble)-> shared_ptr<Cell>
 	{
-		shared_ptr<Cell> cell = cells[coord];
-		if (isCreateble && !cell)
+		auto &cell = cells[coord];
+		if (isCreateble && !cell && coordInMap(coord))
 			cell.reset(new Cell());
 
 		return cell;
@@ -95,9 +101,9 @@ Map::~Map()
 
 }
 
-auto Map::getCell(size_t row, size_t col) -> shared_ptr<Cell>
+auto Map::getCell(size_t row, size_t col, bool isCreatable) -> shared_ptr<Cell>
 {
-	return impl->cells(row, col);
+	return impl->cells(row, col, isCreatable);
 }
 
 auto Map::getCell(Coords&& coord, bool isCreatable) -> shared_ptr<Cell>

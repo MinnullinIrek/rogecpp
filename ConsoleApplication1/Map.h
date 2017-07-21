@@ -14,7 +14,7 @@ private:
 public:
 	Map(size_t q, size_t r);
 	~Map();
-	auto getCell(size_t row, size_t col)->shared_ptr<Cell>;
+	auto getCell(size_t row, size_t col, bool isCreatable)->shared_ptr<Cell>;
 
 	auto getCell(Coords && coord, bool isCreatable)->shared_ptr<Cell>;
 
