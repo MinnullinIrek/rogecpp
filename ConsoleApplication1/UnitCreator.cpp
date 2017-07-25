@@ -20,7 +20,13 @@ shared_ptr<Unit> UnitCreator::createUnit(wchar_t ch)
 
 	try
 	{
-		unit->getParam(L"hp") = 10;
+		auto & hp = unit->getParam(L"hp");
+		hp = 10;
+
+		function<void(double val)> a = [unit](double val) {if (val < 0) unit->destroy(); };
+
+		hp.setWatcher(a);
+
 		unit->getParam(L"attack") = 10;
 	}
 	catch (const std::out_of_range& oor)

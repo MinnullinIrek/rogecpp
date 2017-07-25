@@ -2,6 +2,7 @@
 #include "Unit.h"
 #include "Mover.h"
 #include "Characs.h"
+#include "Value.h"
 
 struct Unit::Impl
 {
@@ -56,9 +57,21 @@ void Unit::initParams()
 	impl->chars.reset(new Characs());
 }
 
+void Unit::destroy()
+{
+	this->impl->name.ch = 'Z';
+}
+
 Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())
 {
 	impl->name.ch = ch;
+	cooperator = [](shared_ptr<Unit> attacker, shared_ptr<Unit> defender) {
+
+		auto & defValHp = defender->getParam(L"hp");
+		auto &attValAt = attacker->getParam(L"attack");
+
+		defValHp -= attValAt;
+	};
 }
 
 

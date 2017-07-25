@@ -41,11 +41,17 @@ void Mover::blinkTo(Coords &&cord)
 {
 	auto cell = impl->map->getCell(Coords(cord), true);
 
-	if (cell.get() != nullptr && cell->isEmpty()) {
-		impl->currentCell->resetSpaceObject();
-		cell->setSpaceObject(impl->unit);
-		impl->currentCell = cell;
-		impl->coord = cord;
+	if (cell.get() != nullptr) {
+		if (cell->isEmpty()) {
+			impl->currentCell->resetSpaceObject();
+			cell->setSpaceObject(impl->unit);
+			impl->currentCell = cell;
+			impl->coord = cord;
+		}
+		else
+		{
+			//impl->unit->cooperator(impl->unit, (shared_ptr<Unit>)((Unit*)cell->getSpaceObject().get()));
+		}
 	}
 }
 

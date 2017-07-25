@@ -3,6 +3,7 @@
 #include "ISpaceObject.h"
 #include "INameble.h"
 #include "IMover.h"
+#include <functional>
 
 class Mover;
 class Cell;
@@ -32,6 +33,7 @@ public:
 	Coords getCoord();
 	Value &getParam(const wstring & param);
 	void initParams();
-
+	function<void(shared_ptr<Unit>, shared_ptr<Unit>)> cooperator;
+	void destroy();
 };
 

@@ -77,6 +77,6 @@ Value & operator+=(Value & left, const Value & right)
 
 Value & operator-=(Value & left, const Value & right)
 {
-	left.setValue(left.impl->val + right.impl->val);
+	left.setValue(left.impl->val - right.impl->val);
 	return left;
 }
