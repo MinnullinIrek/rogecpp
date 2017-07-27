@@ -8,12 +8,14 @@
 #include "Visual.h"
 #include "MapCreator.h"
 #include "Cell.h"
+#include "AI.h"
 
 struct GameController::Impl
 {
 	Impl()
 	{
 		MapCreator m;
+
 		map = m.createMap();
 		//shared_ptr<ISpaceObject> sp = map->getCell(0, 0)->getSpaceObject();
 		auto del = [](Unit*unit) {};
@@ -27,6 +29,7 @@ struct GameController::Impl
 	unique_ptr<Unit, function<void(Unit*)>> hero;
 	shared_ptr<Map> map;
 	shared_ptr<Visual> visual;
+	shared_ptr<AI> ai;
 };
 
 GameController::GameController() :impl(make_unique<Impl>())

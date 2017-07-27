@@ -50,7 +50,7 @@ void Mover::blinkTo(Coords &&cord)
 		}
 		else
 		{
-			//impl->unit->cooperator(impl->unit, (shared_ptr<Unit>)((Unit*)cell->getSpaceObject().get()));
+			impl->unit->cooperator(impl->unit, cell->getSpaceObject());
 		}
 	}
 }

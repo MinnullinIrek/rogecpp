@@ -65,12 +65,17 @@ void Unit::destroy()
 Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())
 {
 	impl->name.ch = ch;
-	cooperator = [](shared_ptr<Unit> attacker, shared_ptr<Unit> defender) {
+	cooperator = [](shared_ptr<Unit> attacker, shared_ptr<ISpaceObject> defender) {
+		if (defender) {
+			auto defUnit = dynamic_cast<Unit*>(defender.get());
 
-		auto & defValHp = defender->getParam(L"hp");
-		auto &attValAt = attacker->getParam(L"attack");
+			if (defUnit != nullptr) {
+				auto & defValHp = defUnit->getParam(L"hp");
+				auto &attValAt = attacker->getParam(L"attack");
 
-		defValHp -= attValAt;
+				defValHp -= attValAt;
+			}
+		}		
 	};
 }
 

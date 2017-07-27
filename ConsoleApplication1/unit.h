@@ -33,7 +33,8 @@ public:
 	Coords getCoord();
 	Value &getParam(const wstring & param);
 	void initParams();
-	function<void(shared_ptr<Unit>, shared_ptr<Unit>)> cooperator;
+	
+	function<void(shared_ptr<Unit>, shared_ptr<ISpaceObject>)> cooperator;
 	void destroy();
 };
 

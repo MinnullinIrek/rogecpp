@@ -135,6 +135,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
     <ClInclude Include="Bag.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Characs.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Visual.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
     <ClCompile Include="Bag.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Characs.cpp" />
