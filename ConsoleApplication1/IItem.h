@@ -1,18 +1,34 @@
 #pragma once
 #include "utils.h"
+#include "INameble.h"
 
-enum class ItemType;
-
-class IItem
+enum class ItemType
 {
-protected:
+	simple =0,
+	armour,
+	weapon,
+	scroll,
+	poution,
+	staff,
+	mech
+};
 
-	struct Impl {};
+class Item 
+{
+
+	struct Impl;
 
 	unique_ptr<Impl> impl;
-public:
-	IItem();
 
-	
+public:
+	Item(ItemType type);
+	~Item();
+	auto getType()->ItemType;
+
+	auto getName(INameble::Type type)->wstring;
+	auto setName(INameble::Type type, wstring value)->void;
+
+
+
 };
 

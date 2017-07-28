@@ -2,7 +2,7 @@
 #include "utils.h"
 
 
-class IItem;
+class Item;
 
 class Bag final
 {
@@ -15,6 +15,10 @@ public:
 	~Bag();
 	auto getSize();
 
-	auto push_back(shared_ptr<IItem> item) -> void;
+	auto push_back(shared_ptr<Item> item) -> void;
+
+	auto watchItems() -> void;
+	auto nextItem() -> shared_ptr<Item>;
+
 };
 

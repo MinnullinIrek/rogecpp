@@ -1,7 +1,6 @@
 #pragma once
 #include "IItem.h"
-class SomeItem :
-	public IItem
+class SomeItem 
 {
 public:
 	SomeItem();
