@@ -86,6 +86,7 @@ void GameController::run()
 		default:
 			break;
 		}
+		impl->ai->go();
 
 	}
 

@@ -54,6 +54,7 @@ auto MapCreator::createMap(shared_ptr<AI> ai)-> shared_ptr<Map>
 			unit->setMover(new SimpleMover(map, map->getCell(row, col, true), Coords{ row, col }, unit));
 
 			if (ch == '@') {
+				ai->addHero(unit);
 				map->getCell(row, col, true)->setSpaceObject(unit);
 			}
 			else if (ch != ' ') {

@@ -29,6 +29,7 @@ public:
 	virtual wchar_t getChar() override;
 	virtual void setMover(Mover* mover);
 	virtual auto moveTo(crd row, crd col) -> void override;
+	virtual auto directTo(crd row, crd col) -> void override;
 	shared_ptr<Cell> currentCell();
 	Coords getCoord();
 	Value &getParam(const wstring & param);

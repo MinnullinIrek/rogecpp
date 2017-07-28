@@ -46,26 +46,18 @@ auto AI::go() -> void
 	{
 		Coords attackerCoord = attacker->getCoord();
 		Coords defenderCoord = defender->getCoord();
-
-		
-
-
+		attacker->directTo(defenderCoord.row, defenderCoord.col);
 	};
 
 
 	auto attack = [radius](shared_ptr<Unit> hero, shared_ptr<Unit> enemy, function<double(shared_ptr<Unit>, shared_ptr<Unit>)> getDistance, function<void(shared_ptr<Unit>, shared_ptr<Unit>)> doSomething)
 	{
-		if (getDistance(hero, enemy) <= radius)
-		{
+		if (getDistance(hero, enemy) <= radius){
 			doSomething(enemy, hero);
 		}
-
-		return false;
 	} ;
 
 	for (auto unit : impl->eneimies) {
-
-
-
+		attack(impl->hero, unit, getDistance, doSomething);
 	}
 }

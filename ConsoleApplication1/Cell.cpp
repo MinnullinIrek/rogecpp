@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Cell.h"
 #include "ISpaceObject.h"
-
+#include "Bag.h";
 
 struct Cell::Impl
 {
 	shared_ptr<ISpaceObject> spceObj;
+	shared_ptr<Bag> bag;
 };
 
 Cell::Cell() :impl(make_unique<Impl>())

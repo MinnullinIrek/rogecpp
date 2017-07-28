@@ -37,6 +37,12 @@ auto Unit::moveTo(crd row, crd col) -> void
 		impl->mover->moveTo(Coords{ row, col });
 }
 
+auto Unit::directTo(crd row, crd col) -> void
+{
+	if (impl->mover)
+		impl->mover->directTo(Coords{ row, col });
+}
+
 shared_ptr<Cell> Unit::currentCell()
 {
 	return impl->mover->getCurrentCell();
