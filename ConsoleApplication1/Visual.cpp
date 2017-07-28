@@ -163,3 +163,11 @@ void Visual::printParams()
 
 
 }
+
+void Visual::showBag()
+{
+
+
+
+}
+ 

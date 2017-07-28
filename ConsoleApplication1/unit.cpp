@@ -3,12 +3,14 @@
 #include "Mover.h"
 #include "Characs.h"
 #include "Value.h"
+#include "Bag.h"
 
 struct Unit::Impl
 {
 	Name name;
 	unique_ptr<Mover> mover;
 	unique_ptr<Characs> chars;
+	shared_ptr<Bag> bag = make_shared<Bag>();
 };
 
 wstring Unit::getName(Type t)
@@ -66,6 +68,11 @@ void Unit::initParams()
 void Unit::destroy()
 {
 	this->impl->name.ch = 'Z';
+}
+
+auto Unit::getBag() -> shared_ptr<Bag>
+{
+	return impl->bag;
 }
 
 Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())

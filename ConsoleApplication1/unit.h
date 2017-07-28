@@ -8,6 +8,7 @@
 class Mover;
 class Cell;
 class Value;
+class Bag;
 //class UnitCreator;
 
 class Unit : public ISpaceObject, public INameble, public IMover
@@ -37,5 +38,8 @@ public:
 	
 	function<void(shared_ptr<Unit>, shared_ptr<ISpaceObject>)> cooperator;
 	void destroy();
+	
+	auto getBag() ->shared_ptr<Bag>;
+
 };
 

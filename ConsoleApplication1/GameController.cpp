@@ -83,6 +83,9 @@ void GameController::run()
 			break;
 		case Action::wait:
 			break;
+		case Action::inventory:
+			impl->visual->showBag();
+			break;
 		default:
 			break;
 		}

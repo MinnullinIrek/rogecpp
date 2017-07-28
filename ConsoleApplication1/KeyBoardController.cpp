@@ -51,6 +51,9 @@ Action KeyBoardController::getCh()
 	case static_cast<int>(Direction::pgDn) :
 		a = Action::downRight;
 		break;
+	case static_cast<int>(Direction::i) :
+		a = Action::inventory;
+		break;
 	default:
 		break;
 	}

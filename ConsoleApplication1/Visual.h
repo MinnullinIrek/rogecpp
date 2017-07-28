@@ -35,6 +35,8 @@ public:
 	void printRegionIn(MapReg &&regMap, Region &&regConsole);
 	void cleanRegion(Region &&regConsole);
 	void printMap();
+	void showBag();
+
 private:
 
 	bool isInRegion(const Coords &coords);
@@ -43,5 +45,6 @@ private:
 
 	void printParams();
 
+	
 };
 
