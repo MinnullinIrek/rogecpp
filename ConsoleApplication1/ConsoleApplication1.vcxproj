@@ -184,6 +184,7 @@
     </ClCompile>
     <ClCompile Include="unit.cpp" />
     <ClCompile Include="UnitCreator.cpp" />
+    <ClCompile Include="utils.cpp" />
     <ClCompile Include="Value.cpp" />
     <ClCompile Include="Visual.cpp" />
   </ItemGroup>

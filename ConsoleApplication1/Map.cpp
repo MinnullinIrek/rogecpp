@@ -46,7 +46,7 @@ struct Map::Cells
 		return cell;
 	}
 
-	auto operator()(size_t row, size_t col, bool isCreateble)-> shared_ptr<Cell>
+	auto operator()(crd row, crd col, bool isCreateble)-> shared_ptr<Cell>
 	{
 		return getCell(Coords{ row, col }, isCreateble);
 	}
@@ -77,21 +77,21 @@ struct Map::Cells
 public:
 
 
-	const size_t	rowCount = 0;
-	const size_t	colCount = 0;
+	const crd	rowCount = 0;
+	const crd	colCount = 0;
 	CellMap cells;
 };
 
 struct Map::Impl
 {
-	Impl(size_t rowCount, size_t colCount) :cells(rowCount, colCount) {}
+	Impl(crd rowCount, crd colCount) :cells(rowCount, colCount) {}
 
 	~Impl() {}
 	Cells cells;
 };
 
 
-Map::Map(size_t rowCount, size_t colCount) :impl(make_unique<Impl>(rowCount, colCount))
+Map::Map(crd rowCount, crd colCount) :impl(make_unique<Impl>(rowCount, colCount))
 {
 
 }
@@ -101,7 +101,7 @@ Map::~Map()
 
 }
 
-auto Map::getCell(size_t row, size_t col, bool isCreatable) -> shared_ptr<Cell>
+auto Map::getCell(crd row, crd col, bool isCreatable) -> shared_ptr<Cell>
 {
 	return impl->cells(row, col, isCreatable);
 }

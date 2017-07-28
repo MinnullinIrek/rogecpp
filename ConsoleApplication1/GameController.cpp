@@ -12,11 +12,11 @@
 
 struct GameController::Impl
 {
-	Impl()
+	Impl():ai(make_unique<AI>())
 	{
 		MapCreator m;
 
-		map = m.createMap();
+		map = m.createMap(ai);
 		//shared_ptr<ISpaceObject> sp = map->getCell(0, 0)->getSpaceObject();
 		auto del = [](Unit*unit) {};
 		hero = unique_ptr<Unit, decltype(del)>((Unit*)map->getCell(0, 0, false)->getSpaceObject().get(), del);

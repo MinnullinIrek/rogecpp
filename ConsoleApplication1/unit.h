@@ -28,7 +28,7 @@ public:
 	virtual void setName(wstring&& nm, Type t = Type::name) override;
 	virtual wchar_t getChar() override;
 	virtual void setMover(Mover* mover);
-	virtual auto moveTo(size_t row, size_t col) -> void override;
+	virtual auto moveTo(crd row, crd col) -> void override;
 	shared_ptr<Cell> currentCell();
 	Coords getCoord();
 	Value &getParam(const wstring & param);

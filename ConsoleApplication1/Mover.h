@@ -25,5 +25,6 @@ public:
 
 protected:
 	void blinkTo(Coords &&coord);
+	void directTo(Coords &&coord);
 };
 

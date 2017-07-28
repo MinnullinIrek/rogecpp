@@ -31,7 +31,7 @@ void Unit::setMover(Mover* mover)
 	impl->mover.reset(mover);
 }
 
-auto Unit::moveTo(size_t row, size_t col) -> void
+auto Unit::moveTo(crd row, crd col) -> void
 {
 	if (impl->mover)
 		impl->mover->moveTo(Coords{ row, col });

@@ -2,6 +2,7 @@
 #include "utils.h"
 
 class Map;
+class AI;
 
 class MapCreator
 {
@@ -12,7 +13,7 @@ public:
 	MapCreator();
 	~MapCreator();
 
-	auto createMap()->shared_ptr<Map>;
+	auto createMap(shared_ptr<AI> ai)->shared_ptr<Map>;
 
 };
 

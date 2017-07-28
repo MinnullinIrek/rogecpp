@@ -55,3 +55,15 @@ void Mover::blinkTo(Coords &&cord)
 	}
 }
 
+void Mover::directTo(Coords && coordTo)
+{
+	Coords newCoord = impl->coord;
+	if (newCoord.col < coordTo.col)
+	{
+		newCoord.col++;
+	}
+
+	//newCoord.col = newCoord.col + (coordTo.col - newCoord.col) / abs((coordTo.col - newCoord.col);
+
+}
+

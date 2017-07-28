@@ -20,8 +20,8 @@ struct Visual::Impl
 	}
 	shared_ptr<Map> map;
 	unique_ptr<Unit, function<void(Unit*)>> hero;
-	const size_t sizeRow = 10;
-	const size_t sizeCol = 10;
+	const crd sizeRow = 10;
+	const crd sizeCol = 10;
 
 public:
 	array<HANDLE, 2> handles;

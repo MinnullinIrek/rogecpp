@@ -7,11 +7,12 @@
 #include "unit.h"
 #include "SimpleMover.h"
 #include "Value.h"
+#include "AI.h"
 
 struct MapCreator::Impl {
 
-	size_t rowCount = 12;
-	size_t colCount = 20;
+	crd rowCount = 12;
+	crd colCount = 20;
 
 	wstring mapstring =
 		L"@                   "
@@ -40,27 +41,26 @@ MapCreator::~MapCreator()
 {
 }
 
-auto MapCreator::createMap()-> shared_ptr<Map>
+auto MapCreator::createMap(shared_ptr<AI> ai)-> shared_ptr<Map>
 {
 	auto map = make_shared<Map>(impl->rowCount, impl->colCount);
 
-	for (size_t row = 0; row < impl->rowCount; row++)
-		for (size_t col = 0; col < impl->colCount; col++) {
+	for (crd row = 0; row < impl->rowCount; row++)
+		for (crd col = 0; col < impl->colCount; col++) {
 			wchar_t ch = impl->mapstring[row * impl->colCount + col];
 
+			auto unit = UnitCreator::createUnit(ch);
+
+			unit->setMover(new SimpleMover(map, map->getCell(row, col, true), Coords{ row, col }, unit));
+
 			if (ch == '@') {
-				auto unit = UnitCreator::createUnit(ch);
-
-				unit->setMover(new SimpleMover(map, map->getCell(row, col, true), Coords{ row, col }, unit));
-
-
-
 				map->getCell(row, col, true)->setSpaceObject(unit);
 			}
-			else
-				if (ch != ' ') {
-					map->getCell(row, col, true)->setSpaceObject(UnitCreator::createUnit(ch));
-				}
+			else if (ch != ' ') {
+					
+				ai->addEnemy(unit);
+				map->getCell(row, col, true)->setSpaceObject(unit);
+			}
 
 		}
 	return map;
