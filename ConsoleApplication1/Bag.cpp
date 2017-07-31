@@ -43,5 +43,16 @@ auto Bag::nextItem() -> shared_ptr<Item>
 		return shared_ptr<Item>(nullptr);
 }
 
+auto Bag::begin() -> unordered_map<ItemType, shared_ptr<Item>>::iterator
+{
+	return impl->items.begin();
+
+}
+
+auto Bag::end() -> unordered_map<ItemType, shared_ptr<Item>>::iterator
+{
+	return impl->items.end();
+}
+
 
 

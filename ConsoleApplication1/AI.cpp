@@ -52,9 +52,9 @@ auto AI::go() -> void
 
 	auto attack = [radius](shared_ptr<Unit> hero, shared_ptr<Unit> enemy, function<double(shared_ptr<Unit>, shared_ptr<Unit>)> getDistance, function<void(shared_ptr<Unit>, shared_ptr<Unit>)> doSomething)
 	{
-		if (getDistance(hero, enemy) <= radius){
-			doSomething(enemy, hero);
-		}
+//		if (getDistance(hero, enemy) <= radius){
+//			doSomething(enemy, hero);
+//		}
 	} ;
 
 	for (auto unit : impl->eneimies) {

@@ -7,6 +7,8 @@
 #include "Cell.h"
 #include "unit.h"
 #include "Value.h"
+#include "Bag.h"
+#include "IItem.h"
 
 struct Visual::Impl
 {
@@ -166,8 +168,22 @@ void Visual::printParams()
 
 void Visual::showBag()
 {
+	Region regConsole{0, 0, 50, 50};
+	cleanRegion(move(regConsole));
+	impl->hero->getBag()->watchItems();
+	
+	auto bag = impl->hero->getBag();
+
+	for (auto item : (*bag.get())) {
+		auto st = item.second->getName(INameble::Type::name);
+
+
+	}
 
 
 
+
+
+	impl->changeBuffer();
 }
  
