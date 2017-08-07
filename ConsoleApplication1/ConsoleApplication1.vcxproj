@@ -146,10 +146,12 @@
     <ClInclude Include="INameble.h" />
     <ClInclude Include="IProperty.h" />
     <ClInclude Include="ISpaceObject.h" />
+    <ClInclude Include="ItemCreater.h" />
     <ClInclude Include="KeyBoardController.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapCreator.h" />
     <ClInclude Include="Mover.h" />
+    <ClInclude Include="RandomGame.h" />
     <ClInclude Include="SimpleMover.h" />
     <ClInclude Include="SomeItem.h" />
     <ClInclude Include="stdafx.h" />
@@ -170,10 +172,12 @@
     <ClCompile Include="INameble.cpp" />
     <ClCompile Include="IProperty.cpp" />
     <ClCompile Include="ISpaceObject.cpp" />
+    <ClCompile Include="ItemCreater.cpp" />
     <ClCompile Include="KeyBoardController.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapCreator.cpp" />
     <ClCompile Include="Mover.cpp" />
+    <ClCompile Include="RandomGame.cpp" />
     <ClCompile Include="SimpleMover.cpp" />
     <ClCompile Include="SomeItem.cpp" />
     <ClCompile Include="stdafx.cpp">

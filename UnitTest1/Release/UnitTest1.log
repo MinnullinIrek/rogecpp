@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  unittest1.cpp
+LINK : warning LNK4075: не учитывается "/INCREMENTAL" из-за спецификации "/LTCG"
+     Создается библиотека C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Release\UnitTest1.lib и объект C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Release\UnitTest1.exp
+  Создание кода
+  All 1081 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  UnitTest1.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Release\UnitTest1.dll

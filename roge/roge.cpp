@@ -1,4 +1,4 @@
-// roge.cpp: определяет точку входа для консольного приложения.
+п»ї// roge.cpp: РѕРїСЂРµРґРµР»СЏРµС‚ С‚РѕС‡РєСѓ РІС…РѕРґР° РґР»СЏ РєРѕРЅСЃРѕР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
 //
 
 #include "stdafx.h"
@@ -18,27 +18,70 @@
 #include <unordered_map>
 #include <functional>
 #include <memory>
+#include <array>
 
 
 using namespace std;
 
+int *b = new int;
+
+class A2
+{
+public:
+	A2() { cout << "A()"; }
+	~A2() { cout << "~A()"; }
+
+};
+
 class MyClass
 {
 public:
-	MyClass();
-	~MyClass();
+	MyClass(A2 *a);
+	virtual ~MyClass() = default;
+
+	A2 * a = new A2;
 
 private:
 
 };
 
+
+
+
 #include "../ConsoleApplication1/Map.h"
-//#include "../ConsoleApplication1/Cell.h"
 #include "../ConsoleApplication1/GameController.h"
 #include "../ConsoleApplication1/Visual.h"
+#include "../ConsoleApplication1/RandomGame.h"
+
+
 int main()
 {
-	setlocale(LC_ALL, "rus");
+	
+	RandomGame r;
+	r.init();
+
+	while (true)
+	{
+		_getch();
+		printf("%d\n",r.getRandom());
+
+	}
+
+	array<int, 3> ar1 = {1, 2, 3};
+	array<int, 3> ar2 = { 3, 4, 5 };
+
+	ar1 = ar2;
+
+	std::wstring{ L"sasda" };
+
+
+	setlocale(LC_ALL, "rus"); \
+		A2* a = new A2;
+	{
+
+		MyClass m(a);
+	}
+	b;
 
 	GameController g;
 
@@ -56,10 +99,7 @@ int main()
     return 0;
 }
 
-MyClass::MyClass()
+MyClass::MyClass(A2 *a):a(a)
 {
-}
 
-MyClass::~MyClass()
-{
 }

@@ -1,0 +1,25 @@
+﻿  stdafx.cpp
+  AI.cpp
+  Bag.cpp
+  Cell.cpp
+Cell.cpp(4): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+  Characs.cpp
+  GameController.cpp
+  IItem.cpp
+  INameble.cpp
+  IProperty.cpp
+  ISpaceObject.cpp
+  ItemCreater.cpp
+  KeyBoardController.cpp
+  Map.cpp
+  MapCreator.cpp
+  Mover.cpp
+  SimpleMover.cpp
+  SomeItem.cpp
+  unit.cpp
+  UnitCreator.cpp
+  utils.cpp
+  Value.cpp
+  Компиляция...
+  Visual.cpp
+  ConsoleApplication1.vcxproj -> C:\Users\minnullin_iz\Documents\books\rogecpp\rogecpp\Release\rogelib.lib

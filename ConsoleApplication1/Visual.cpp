@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <array>
-
+#include <algorithm>
 
 #include "Visual.h"
 #include "Map.h"
@@ -174,11 +174,13 @@ void Visual::showBag()
 	
 	auto bag = impl->hero->getBag();
 
-	for (auto item : (*bag.get())) {
+	for_each(bag->begin(), bag->end(), [](pair < ItemType, shared_ptr<Item>> el) {auto st =el.second->getName(INameble::Type::name); });
+
+	/*for (auto item : (*bag.get())) {
 		auto st = item.second->getName(INameble::Type::name);
 
 
-	}
+	}*/
 
 
 
