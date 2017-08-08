@@ -23,7 +23,7 @@ public:
 	auto watchItems() -> void;
 	auto nextItem() -> shared_ptr<Item>;
 
-	auto begin() -> unordered_map<ItemType, shared_ptr<Item>>::iterator;
+	auto begin() ->  unordered_map<ItemType, shared_ptr<Item>>::iterator;
 	auto end() -> unordered_map<ItemType, shared_ptr<Item>>::iterator;
 
 

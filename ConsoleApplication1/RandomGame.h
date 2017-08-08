@@ -9,7 +9,7 @@ public:
 
 	static void init();
 
-	int getRandom(int min = 0, int max = 10);
+	static int getRandom(int min = 0, int max = 10);
 
 };
 

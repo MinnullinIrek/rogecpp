@@ -2,6 +2,8 @@
 #include "IItem.h"
 #include "INameble.h"
 
+long Item::s_id = 0;
+
 struct Item::Impl
 {
 	Impl(ItemType tp):type(tp)
@@ -11,7 +13,7 @@ struct Item::Impl
 	Name nm;
 };
 
-Item::Item(ItemType type):impl(make_unique<Impl>(type))
+Item::Item(ItemType type):impl(make_unique<Impl>(type)), id(s_id++)
 {
 }
 

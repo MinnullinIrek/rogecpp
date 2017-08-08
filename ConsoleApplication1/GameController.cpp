@@ -44,12 +44,14 @@ GameController::~GameController()
 void GameController::run()
 {
 	Action act = Action::wait;
+	impl->visual->printMap();
 
 	while (act != Action::esc)
 	{
-		impl->visual->printMap();
+		
 		auto coord = impl->hero->getCoord();
 		act = KeyBoardController::getCh();
+		impl->visual->printMap();
 
 		switch (act)
 		{

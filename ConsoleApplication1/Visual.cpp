@@ -174,16 +174,13 @@ void Visual::showBag()
 	
 	auto bag = impl->hero->getBag();
 
-	for_each(bag->begin(), bag->end(), [](pair < ItemType, shared_ptr<Item>> el) {auto st =el.second->getName(INameble::Type::name); });
+	short y = 0;
 
-	/*for (auto item : (*bag.get())) {
-		auto st = item.second->getName(INameble::Type::name);
-
-
-	}*/
-
-
-
+	for (auto item = bag->begin(); item != bag->end(); ++ item, y) {
+		auto st = item->second->getName(INameble::Type::name);
+		
+		putChar(*impl->itHandle, COORD{ 0, y++ }, st, Color::White, Color::Black);
+	}
 
 
 	impl->changeBuffer();

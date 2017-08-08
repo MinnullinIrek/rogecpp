@@ -20,6 +20,8 @@ class Item
 
 	unique_ptr<Impl> impl;
 
+	static long s_id;
+
 public:
 	Item(ItemType type);
 	~Item();
@@ -27,7 +29,7 @@ public:
 
 	auto getName(INameble::Type type)->wstring;
 	auto setName(INameble::Type type, wstring value)->void;
-
+	const long id = 0;
 
 
 };

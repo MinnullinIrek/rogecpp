@@ -3,6 +3,9 @@
 #include "unit.h"
 #include "UnitCreator.h"
 #include "Value.h"
+#include "RandomGame.h"
+#include "ItemCreater.h"
+#include "Bag.h"
 
 UnitCreator::UnitCreator()
 {
@@ -28,6 +31,15 @@ shared_ptr<Unit> UnitCreator::createUnit(wchar_t ch)
 		hp.setWatcher(a);
 
 		unit->getParam(L"attack") = 10;
+
+		auto bag = unit->getBag();
+
+		auto random = 10;
+		for (auto i = 0; i < random; i++) {
+			bag->push_back(ItemCreater::createItem(L"some item"));
+		}
+
+
 	}
 	catch (const std::out_of_range& oor)
 	{

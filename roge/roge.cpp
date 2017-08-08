@@ -60,13 +60,6 @@ int main()
 	RandomGame r;
 	r.init();
 
-	while (true)
-	{
-		_getch();
-		printf("%d\n",r.getRandom());
-
-	}
-
 	array<int, 3> ar1 = {1, 2, 3};
 	array<int, 3> ar2 = { 3, 4, 5 };
 
