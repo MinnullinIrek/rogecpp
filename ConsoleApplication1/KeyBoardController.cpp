@@ -54,6 +54,13 @@ Action KeyBoardController::getCh()
 	case static_cast<int>(Direction::i) :
 		a = Action::inventory;
 		break;
+	case static_cast<int>(Direction::esc) :
+		a = Action::esc;
+		break;
+	case static_cast<int>(Direction::p) :
+		a = Action::pickUP;
+		break;
+
 	default:
 		break;
 	}

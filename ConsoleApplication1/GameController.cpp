@@ -44,14 +44,19 @@ GameController::~GameController()
 void GameController::run()
 {
 	Action act = Action::wait;
-	impl->visual->printMap();
+	impl->visual->printCurrentState();
 
-	while (act != Action::esc)
+	auto pickUP = [this]()
+	{
+		impl->visual->setState(VisualState::cellBag);
+	};
+
+	while (true)
 	{
 		
 		auto coord = impl->hero->getCoord();
 		act = KeyBoardController::getCh();
-		impl->visual->printMap();
+		
 
 		switch (act)
 		{
@@ -80,19 +85,23 @@ void GameController::run()
 			impl->hero->moveTo(coord.row + 1, coord.col + 1);
 			break;
 		case Action::esc:
+			impl->visual->setState(VisualState::map);
 			break;
 		case Action::enter:
 			break;
 		case Action::wait:
 			break;
 		case Action::inventory:
-			impl->visual->showBag();
+			impl->visual->setState(VisualState::bag);
+			break;
+		case Action::pickUP:
+			pickUP();
 			break;
 		default:
 			break;
 		}
 		impl->ai->go();
-
+		impl->visual->printCurrentState();
 	}
 
 

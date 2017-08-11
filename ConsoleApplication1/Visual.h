@@ -18,6 +18,14 @@ public:
 
 };
 
+enum class VisualState
+{
+	map,
+	bag,
+	cellBag,
+};
+
+
 class Visual
 {
 	struct Impl;
@@ -34,10 +42,15 @@ public:
 
 	void printRegionIn(MapReg &&regMap, Region &&regConsole);
 	void cleanRegion(Region &&regConsole);
-	void printMap();
-	void showBag();
+	
+	void printCurrentState();
+	void setState(VisualState v);
 
 private:
+
+	void printMap();
+	void showHeroBag();
+	
 
 	bool isInRegion(const Coords &coords);
 	MapReg getRegMapForPrint();

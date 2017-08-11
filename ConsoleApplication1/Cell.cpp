@@ -37,6 +37,9 @@ auto Cell::getChar() -> wchar_t
 {
 	if (impl->spceObj.get() != nullptr)
 		return impl->spceObj->getChar();
+	else if ( impl->bag && impl->bag->getSize() > 0)
+		return '$';
+	
 	return static_cast<wchar_t>(' ');
 }
 
@@ -48,5 +51,12 @@ auto Cell::isEmpty() -> bool
 void Cell::resetSpaceObject()
 {
 	impl->spceObj.reset();
+}
+
+auto Cell::getBag() -> shared_ptr<Bag>
+{
+	if (!impl->bag)
+		impl->bag = make_shared<Bag>();
+	return impl->bag;
 }
 

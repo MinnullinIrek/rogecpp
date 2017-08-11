@@ -45,7 +45,35 @@ private:
 
 };
 
+template <typename T>
+class A
+{
+public:
+	T value;
+	virtual void f()
+	{}
+};
 
+template <typename T>
+class Output : public A<T>
+{
+public :
+	
+
+};
+
+template <typename T>
+Output<T>* toBool();
+
+Output<int> * i;
+
+template Output<bool>* toBool();
+template Output<int>* toBool();
+//template <typename T>
+Output<bool>* toBool()
+{
+	return dynamic_cast<Output<bool>*> (i);
+}
 
 
 #include "../ConsoleApplication1/Map.h"
@@ -56,7 +84,11 @@ private:
 
 int main()
 {
-	
+	/*while (true)
+	{
+		cout <<  _getch() << endl;
+	}*/
+
 	RandomGame r;
 	r.init();
 

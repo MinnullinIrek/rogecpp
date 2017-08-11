@@ -37,6 +37,11 @@ Coords Mover::getCoord()
 	return impl->coord;
 }
 
+void Mover::clear()
+{
+	impl->currentCell->resetSpaceObject();
+}
+
 void Mover::blinkTo(Coords &&cord)
 {
 	auto cell = impl->map->getCell(Coords(cord), true);

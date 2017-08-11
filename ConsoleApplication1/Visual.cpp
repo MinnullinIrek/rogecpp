@@ -10,6 +10,7 @@
 #include "Bag.h"
 #include "IItem.h"
 
+
 struct Visual::Impl
 {
 	void changeBuffer()
@@ -24,6 +25,8 @@ struct Visual::Impl
 	unique_ptr<Unit, function<void(Unit*)>> hero;
 	const crd sizeRow = 10;
 	const crd sizeCol = 10;
+
+	VisualState state = VisualState::map;
 
 public:
 	array<HANDLE, 2> handles;
@@ -48,11 +51,30 @@ public:
 		itHandle++;
 	}
 
+	void showBag(shared_ptr<Bag> bag, Region && regConsole)
+	{
+		//cleanRegion(move(regConsole));
 
+		cleanRegion(regConsole);
+
+		short y = 0;
+
+		bag->forEach([&y, this, &regConsole](shared_ptr<Item> item) { putChar(*itHandle, COORD{ regConsole.col1,  regConsole.row1 + y++ }, item->getName(INameble::Type::name), Color::White, Color::Black); });
+	}
 
 	auto printCellIn(shared_ptr<Cell> cell, short conRow, short conCol)
 	{
 		putChar(*itHandle, COORD{ conCol, conRow }, (cell) ? cell->getChar() : ' ', Color::White, Color::Black);
+	}
+
+	void cleanRegion(Region && regConsole)
+	{
+		clearRect(*itHandle, regConsole, ' ');
+	}
+
+	void cleanRegion(const Region & regConsole)
+	{
+		clearRect(*itHandle, regConsole, ' ');
 	}
 
 };
@@ -159,30 +181,38 @@ void Visual::printParams()
 	for (auto& key : paramKeys)
 	{
 		putChar(*impl->itHandle, COORD{ 20, 5 + i++ }, key + (L":") + std::to_wstring(static_cast<double>(impl->hero->getParam(key))), Color::White, Color::Black);
-
-
 	}
-
-
 }
 
-void Visual::showBag()
+void Visual::showHeroBag()
 {
-	Region regConsole{0, 0, 50, 50};
-	cleanRegion(move(regConsole));
-	impl->hero->getBag()->watchItems();
-	
 	auto bag = impl->hero->getBag();
+	//Region regConsole{0, 0, 50, 50};
 
-	short y = 0;
+	impl->showBag(bag, { 0, 0, 50, 50 });
 
-	for (auto item = bag->begin(); item != bag->end(); ++ item, y) {
-		auto st = item->second->getName(INameble::Type::name);
-		
-		putChar(*impl->itHandle, COORD{ 0, y++ }, st, Color::White, Color::Black);
-	}
-
+	
 
 	impl->changeBuffer();
+}
+
+void Visual::printCurrentState()
+{
+	switch (impl->state)
+	{
+	case VisualState::map:
+		printMap();
+		break;
+	case VisualState::bag:
+		showHeroBag();
+		break;
+	default:
+		break;
+	}
+}
+
+void Visual::setState(VisualState v)
+{
+	impl->state = v;
 }
  

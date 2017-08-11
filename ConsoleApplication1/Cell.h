@@ -3,6 +3,8 @@
 using namespace std;
 
 class ISpaceObject;
+class Bag;
+
 class Cell
 {
 private:
@@ -17,6 +19,8 @@ public:
 	auto getChar() -> wchar_t;
 	auto isEmpty() -> bool;
 	void resetSpaceObject();
+	auto getBag()->shared_ptr<Bag>;
+
 
 };
 

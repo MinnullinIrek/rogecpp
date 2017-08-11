@@ -14,6 +14,7 @@ enum class Direction {
 	home	= 71,
 	enter	= 13,
 	i		= 105,
+	p		= 112,
 };
 
 enum class Action
@@ -29,7 +30,8 @@ enum class Action
 	esc,
 	enter,
 	inventory,
-	wait
+	wait,
+	pickUP,
 };
 
 class KeyBoardController

@@ -4,6 +4,7 @@
 #include "Characs.h"
 #include "Value.h"
 #include "Bag.h"
+#include "Cell.h"
 
 struct Unit::Impl
 {
@@ -67,6 +68,14 @@ void Unit::initParams()
 
 void Unit::destroy()
 {
+	auto cell = impl->mover->getCurrentCell();
+	auto bag = cell->getBag();
+
+	 
+	impl->bag->forEach([bag](shared_ptr<Item> item) { bag->push_back(item); });
+
+	impl->mover->clear();
+
 	this->impl->name.ch = 'Z';
 }
 

@@ -22,6 +22,7 @@ public:
 	virtual void moveTo(Coords && coord) = 0;
 	shared_ptr<Cell> getCurrentCell();
 	Coords  getCoord();
+	void clear(); 
 
 protected:
 	void blinkTo(Coords &&coord);
