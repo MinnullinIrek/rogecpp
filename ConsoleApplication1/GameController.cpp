@@ -30,6 +30,21 @@ struct GameController::Impl
 	shared_ptr<Map> map;
 	shared_ptr<Visual> visual;
 	shared_ptr<AI> ai;
+
+	void getCoord(Coords &cd, Action act)
+	{
+		
+		if (static_cast<int>(act) & static_cast<int>(Action::left))
+			cd.col--;
+		else if (static_cast<int>(act) & static_cast<int>(Action::right))
+			cd.col++;
+
+		if (static_cast<int>(act) & static_cast<int>(Action::down))
+			cd.row++;
+		else if (static_cast<int>(act) & static_cast<int>(Action::up))
+			cd.row--;
+	}
+
 };
 
 GameController::GameController() :impl(make_unique<Impl>())
@@ -44,58 +59,59 @@ GameController::~GameController()
 void GameController::run()
 {
 	Action act = Action::wait;
+	VisualState state = VisualState::map;
+	int currentItem = 0;
+
 	impl->visual->printCurrentState();
 
-	auto pickUP = [this]()
+	auto setState = [this, &state](VisualState vstate)
 	{
-		impl->visual->setState(VisualState::cellBag);
+		state = vstate;
+		impl->visual->setState(vstate);
 	};
+
+	auto moveTo = [state, this](Action act)
+	{
+		if (state == VisualState::map) {
+			auto coord = impl->hero->getCoord();
+			impl->getCoord(coord, act);
+			impl->hero->moveTo(coord.row, coord.col);
+		}
+		else if (state == VisualState::bag)
+		{
+			//todo
+		}
+	};
+
 
 	while (true)
 	{
-		
-		auto coord = impl->hero->getCoord();
 		act = KeyBoardController::getCh();
-		
 
 		switch (act)
 		{
 		case Action::up:
-			impl->hero->moveTo(coord.row - 1, coord.col);
-			break;
 		case Action::down:
-			impl->hero->moveTo(coord.row + 1, coord.col);
-			break;
 		case Action::left:
-			impl->hero->moveTo(coord.row, coord.col - 1);
-			break;
 		case Action::right:
-			impl->hero->moveTo(coord.row, coord.col + 1);
-			break;
 		case Action::upLeft:
-			impl->hero->moveTo(coord.row - 1, coord.col - 1);
-			break;
 		case Action::upRight:
-			impl->hero->moveTo(coord.row - 1, coord.col + 1);
-			break;
 		case Action::downLeft:
-			impl->hero->moveTo(coord.row + 1, coord.col - 1);
-			break;
 		case Action::downRight:
-			impl->hero->moveTo(coord.row + 1, coord.col + 1);
+			moveTo(act);
 			break;
 		case Action::esc:
-			impl->visual->setState(VisualState::map);
+			setState(VisualState::map);
 			break;
 		case Action::enter:
 			break;
 		case Action::wait:
 			break;
 		case Action::inventory:
-			impl->visual->setState(VisualState::bag);
+			setState(VisualState::bag);
 			break;
 		case Action::pickUP:
-			pickUP();
+			setState(VisualState::cellBag);
 			break;
 		default:
 			break;

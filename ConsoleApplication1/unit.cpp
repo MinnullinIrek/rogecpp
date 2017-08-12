@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include <unordered_map>
+
 #include "Unit.h"
 #include "Mover.h"
 #include "Characs.h"
@@ -12,6 +14,10 @@ struct Unit::Impl
 	unique_ptr<Mover> mover;
 	unique_ptr<Characs> chars;
 	shared_ptr<Bag> bag = make_shared<Bag>();
+
+	unordered_map<wstring, shared_ptr<Item>> wearingItems;
+
+
 };
 
 wstring Unit::getName(Type t)

@@ -40,24 +40,11 @@ public:
 
 	void setMap(shared_ptr<Map> map, Unit* hero);
 
-	void printRegionIn(MapReg &&regMap, Region &&regConsole);
 	void cleanRegion(Region &&regConsole);
 	
 	void printCurrentState();
 	void setState(VisualState v);
 
 private:
-
-	void printMap();
-	void showHeroBag();
-	
-
-	bool isInRegion(const Coords &coords);
-	MapReg getRegMapForPrint();
-	void printBorder(const Region &rg) const;
-
-	void printParams();
-
-	
 };
 
