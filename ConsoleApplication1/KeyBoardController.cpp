@@ -60,6 +60,9 @@ Action KeyBoardController::getCh()
 	case static_cast<int>(Direction::p) :
 		a = Action::pickUP;
 		break;
+	case static_cast<int>(Direction::enter) :
+		a = Action::enter;
+		break;
 
 	default:
 		break;

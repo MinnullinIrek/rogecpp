@@ -41,5 +41,6 @@ public:
 	
 	auto getBag() ->shared_ptr<Bag>;
 
+	void pickUp(shared_ptr<Bag> bag, int itemNum);
 };
 

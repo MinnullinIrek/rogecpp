@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <array>
-#include <algorithm>
+#include <unordered_map>
 
 #include "Visual.h"
 #include "Map.h"
@@ -28,9 +28,12 @@ struct Visual::Impl
 
 	VisualState state = VisualState::map;
 
+	unordered_map<wstring, int> currents;
+
 public:
 	array<HANDLE, 2> handles;
 	array<HANDLE, 2> ::iterator itHandle;
+
 
 
 	Impl() :hero(nullptr, [](Unit* u) {})
@@ -49,16 +52,17 @@ public:
 		itHandle++;
 	}
 
-	void showBag(shared_ptr<Bag> bag, Region && regConsole)
+	void showBag(shared_ptr<Bag> bag, Region && regConsole, int current)
 	{
 		cleanRegion(regConsole);
 
 		short y = 0;
 
-		bag->forEach([&y, this, &regConsole](shared_ptr<Item> item) 
+		bag->forEach([current, &y, this, &regConsole](shared_ptr<Item> item) 
 		{
-			putChar(*itHandle, COORD{ regConsole.col1,  regConsole.row1 + y++ }, wstring(L"[ ]") + item->getName(INameble::Type::name), Color::White, Color::Black); 
-		
+			putChar(*itHandle, COORD{ regConsole.col1,  regConsole.row1 + y }, wstring(y==current ? L"[*]" : L"[ ]") + item->getName(INameble::Type::name), Color::White, Color::Black); 
+			y++;
+			return BagItemDo::next;
 		});
 	}
 
@@ -79,7 +83,7 @@ public:
 
 	void showHeroBag()
 	{
-		showBag(hero->getBag(), { 0, 0, 50, 50 });
+		showBag(hero->getBag(), { 0, 0, 50, 50 }, currents[L"currentBagItem"]);
 	}
 
 	void printMap()
@@ -162,7 +166,7 @@ public:
 		auto bag = map->getCell(hero->getCoord(), false)->getBag();
 
 		if (bag)
-			showBag(bag, { 50 , 0, 100, 100 });
+			showBag(bag, { 50 , 0, 100, 100 }, currents[L"currentCellBagItem"]);
 	}
 };
 
@@ -215,5 +219,10 @@ void Visual::printCurrentState()
 void Visual::setState(VisualState v)
 {
 	impl->state = v;
+}
+
+void Visual::setCurrent(wstring name, int value)
+{
+	impl->currents[name] = value;
 }
  

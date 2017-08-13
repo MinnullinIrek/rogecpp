@@ -44,6 +44,7 @@ public:
 	
 	void printCurrentState();
 	void setState(VisualState v);
+	void setCurrent(wstring name, int value);
 
 private:
 };

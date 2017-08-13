@@ -78,7 +78,7 @@ void Unit::destroy()
 	auto bag = cell->getBag();
 
 	 
-	impl->bag->forEach([bag](shared_ptr<Item> item) { bag->push_back(item); });
+	impl->bag->forEach([bag](shared_ptr<Item> item) { bag->push_back(item); return BagItemDo::next; });
 
 	impl->mover->clear();
 
@@ -88,6 +88,22 @@ void Unit::destroy()
 auto Unit::getBag() -> shared_ptr<Bag>
 {
 	return impl->bag;
+}
+
+void Unit::pickUp(shared_ptr<Bag> bag, int itemNum)
+{
+	int i = 0;
+	auto getter = [this, &i, itemNum] (shared_ptr<Item> item)
+	{
+		if (i++ == itemNum) {
+			impl->bag->push_back(item);
+			return BagItemDo::eraseStop;
+		}
+		
+		return BagItemDo::next;
+	};
+
+	bag->forEach(getter);
 }
 
 Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())

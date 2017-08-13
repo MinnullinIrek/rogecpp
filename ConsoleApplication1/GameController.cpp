@@ -9,6 +9,7 @@
 #include "MapCreator.h"
 #include "Cell.h"
 #include "AI.h"
+#include "Bag.h"
 
 struct GameController::Impl
 {
@@ -45,6 +46,18 @@ struct GameController::Impl
 			cd.row--;
 	}
 
+	void getCurrentItem(int & currentItem, Action act, shared_ptr<Bag> bag)
+	{
+		if (bag) {
+			currentItem += ((static_cast<int>(act) & static_cast<int>(Action::down)) ? 1 : 0) - ((static_cast<int>(act) & static_cast<int>(Action::up)) ? 1 : 0);
+			currentItem = (currentItem < 0) ? 0 : currentItem;
+			currentItem = (currentItem >= bag->getSize()) ? bag->getSize() - 1 : currentItem;
+		}
+		else {
+			currentItem = 0;
+		}
+	}
+
 };
 
 GameController::GameController() :impl(make_unique<Impl>())
@@ -61,6 +74,7 @@ void GameController::run()
 	Action act = Action::wait;
 	VisualState state = VisualState::map;
 	int currentItem = 0;
+	int currentItemInBag = 0;
 
 	impl->visual->printCurrentState();
 
@@ -70,16 +84,30 @@ void GameController::run()
 		impl->visual->setState(vstate);
 	};
 
-	auto moveTo = [state, this](Action act)
+	auto enter = [this, &state, &currentItemInBag]()
+	{
+		if (state == VisualState::cellBag)
+		{
+			impl->hero->pickUp(impl->map->getCell(move(impl->hero->getCoord()), false)->getBag(), currentItemInBag);
+		}
+	};
+
+	
+	auto moveTo = [&currentItemInBag, &currentItem, &state, this](Action act)
 	{
 		if (state == VisualState::map) {
 			auto coord = impl->hero->getCoord();
 			impl->getCoord(coord, act);
 			impl->hero->moveTo(coord.row, coord.col);
 		}
-		else if (state == VisualState::bag)
-		{
-			//todo
+		else if (state == VisualState::bag) {
+
+			impl->getCurrentItem(currentItem, act, impl->hero->getBag());
+			impl->visual->setCurrent(L"currentBagItem", currentItem );
+		}
+		else if (state == VisualState::cellBag) {
+			impl->getCurrentItem(currentItemInBag, act, impl->map->getCell(move(impl->hero->getCoord()), false)->getBag());
+			impl->visual->setCurrent(L"currentCellBagItem", currentItemInBag);
 		}
 	};
 
@@ -104,6 +132,7 @@ void GameController::run()
 			setState(VisualState::map);
 			break;
 		case Action::enter:
+			enter();
 			break;
 		case Action::wait:
 			break;
@@ -119,7 +148,4 @@ void GameController::run()
 		impl->ai->go();
 		impl->visual->printCurrentState();
 	}
-
-
-
 }
