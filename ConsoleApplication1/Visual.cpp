@@ -131,7 +131,7 @@ public:
 			regmap.topLeft.row = min(0, regmap.bottomRight.row - sizeRow + 1);
 
 
-		if (regmap.bottomRight.col == mapSize.row - 1)
+		if (regmap.bottomRight.col == mapSize.col - 1)
 			regmap.topLeft.col = min(0, regmap.bottomRight.col - sizeCol + 1);
 
 		return regmap;

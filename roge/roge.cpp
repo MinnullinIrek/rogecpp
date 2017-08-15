@@ -23,7 +23,7 @@
 
 using namespace std;
 
-int *b = new int;
+
 
 class A2
 {
@@ -45,49 +45,21 @@ private:
 
 };
 
-template <typename T>
-class A
-{
-public:
-	T value;
-	virtual void f()
-	{}
-};
 
-template <typename T>
-class Output : public A<T>
-{
-public :
-	
-
-};
-
-template <typename T>
-Output<T>* toBool();
-
-Output<int> * i;
-
-template Output<bool>* toBool();
-template Output<int>* toBool();
-//template <typename T>
-Output<bool>* toBool()
-{
-	return dynamic_cast<Output<bool>*> (i);
-}
 
 
 #include "../ConsoleApplication1/Map.h"
 #include "../ConsoleApplication1/GameController.h"
 #include "../ConsoleApplication1/Visual.h"
 #include "../ConsoleApplication1/RandomGame.h"
-
+#include "../ConsoleApplication1/Value.h"
 
 int main()
 {
-	/*while (true)
-	{
-		cout <<  _getch() << endl;
-	}*/
+	Value v1(100);
+	Value v2(10);
+
+	Value v3 = v1 - v2;
 
 	RandomGame r;
 	r.init();
@@ -97,7 +69,7 @@ int main()
 
 	ar1 = ar2;
 
-	std::wstring{ L"sasda" };
+	//std::wstring{ L"sasda" };
 
 
 	setlocale(LC_ALL, "rus"); \
@@ -106,7 +78,7 @@ int main()
 
 		MyClass m(a);
 	}
-	b;
+
 
 	GameController g;
 
@@ -120,7 +92,7 @@ int main()
 	}
 	
 
-	getchar();
+	//getchar();
     return 0;
 }
 

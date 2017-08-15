@@ -24,7 +24,7 @@ shared_ptr<Unit> UnitCreator::createUnit(wchar_t ch)
 	try
 	{
 		auto & hp = unit->getParam(L"hp");
-		hp = 10;
+		hp = 100;
 
 		function<void(double val)> a = [unit](double val) {if (val <= 0) unit->destroy(); };
 
@@ -36,7 +36,7 @@ shared_ptr<Unit> UnitCreator::createUnit(wchar_t ch)
 
 		auto random = 10;
 		for (auto i = 0; i < random; i++) {
-			bag->push_back(ItemCreater::createItem(L"some item"));
+			bag->push_back(ItemCreater::createWeapon(L"weapon item", 2));
 		}
 
 

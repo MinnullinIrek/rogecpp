@@ -21,6 +21,8 @@ public:
 class Name
 {
 public:
+	Name() :name_descr({L"", L""}), ch(' ')
+	{}
 	array<wstring, 2> name_descr;
 	wchar_t ch;
 };

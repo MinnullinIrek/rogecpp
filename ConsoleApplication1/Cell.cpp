@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Cell.h"
 #include "ISpaceObject.h"
-#include "Bag.h";
+#include "unit.h"
+#include "Bag.h"
 
 struct Cell::Impl
 {
-	shared_ptr<ISpaceObject> spceObj;
+	shared_ptr<Unit> spceObj;
 	shared_ptr<Bag> bag;
 };
 
@@ -18,12 +19,12 @@ Cell::~Cell()
 {
 }
 
-auto Cell::setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void
+auto Cell::setSpaceObject(shared_ptr<Unit> spaceObject) -> void
 {
 	impl->spceObj = spaceObject;
 }
 
-auto Cell::getSpaceObject() -> shared_ptr<ISpaceObject>
+auto Cell::getSpaceObject() -> shared_ptr<Unit>
 {
 	return impl->spceObj;
 }

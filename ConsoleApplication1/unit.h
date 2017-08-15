@@ -9,6 +9,7 @@ class Mover;
 class Cell;
 class Value;
 class Bag;
+class Item;
 //class UnitCreator;
 
 class Unit : public ISpaceObject, public INameble, public IMover
@@ -19,8 +20,9 @@ protected:
 
 	unique_ptr<Impl> impl;
 
-
+	Unit();
 public:
+
 	Unit(wchar_t ch);
 	~Unit();
 
@@ -36,11 +38,13 @@ public:
 	Value &getParam(const wstring & param);
 	void initParams();
 	
-	function<void(shared_ptr<Unit>, shared_ptr<ISpaceObject>)> cooperator;
+	function<void(shared_ptr<Unit>, shared_ptr<Unit>)> cooperator;
 	void destroy();
 	
 	auto getBag() ->shared_ptr<Bag>;
 
 	void pickUp(shared_ptr<Bag> bag, int itemNum);
+
+	void wearItem(shared_ptr<Item> item, wstring type);
 };
 

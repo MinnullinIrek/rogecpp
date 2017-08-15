@@ -15,7 +15,7 @@
 //CloseHandle
 //KEY_EVENT_RECORD
 
-static LPDWORD d = new DWORD;
+static LPDWORD logD = new DWORD;
 
 struct Region
 {
@@ -58,14 +58,14 @@ inline void putChar(HANDLE h, COORD &&coord , const std::wstring& ch, Color colo
 	//SetConsoleCursorPosition(h, coord);
 	
 	SetColor1(h, color, bkcolor);
-	WriteConsoleOutputCharacter(h, ch.c_str(), ch.length(), coord, d);
+	WriteConsoleOutputCharacter(h, ch.c_str(), ch.length(), coord, logD);
 }
 
 inline void clearRect(HANDLE h, const Region &r, wchar_t empty)
 {
 	std::wstring ws(r.col2 - r.col1 + 1, empty);
 	for (auto irow = r.row1; irow <= r.row2; irow++)
-		WriteConsoleOutputCharacter(h, ws.c_str(), ws.length(), COORD{r.col1, irow}, d);
+		WriteConsoleOutputCharacter(h, ws.c_str(), ws.length(), COORD{r.col1, irow}, logD);
 }
 
 inline void putTextToRegion(HANDLE h, const Region &r, const std::wstring &str)
@@ -76,7 +76,7 @@ inline void putTextToRegion(HANDLE h, const Region &r, const std::wstring &str)
 
 	for (auto irow = r.row1; irow <= r.row2 && current <= str.length(); irow++) {
 
-		WriteConsoleOutputCharacter(h, str.c_str() + current, min(len - current, delta), COORD{ r.col1, irow }, d);
+		WriteConsoleOutputCharacter(h, str.c_str() + current, min(len - current, delta), COORD{ r.col1, irow }, logD);
 		current += delta;
 	}
 }
@@ -102,5 +102,5 @@ inline void printRegion(HANDLE h, const Region &r, Color col, Color bkColor)
 inline void putChar(HANDLE h, COORD &&coord, wchar_t ch, Color color, Color bkcolor)
 {
 	SetColor1(h, color, bkcolor);
-	WriteConsoleOutputCharacter(h, &ch, 1, coord, d);
+	WriteConsoleOutputCharacter(h, &ch, 1, coord, logD);
 }

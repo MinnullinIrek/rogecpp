@@ -16,7 +16,7 @@ RandomGame::~RandomGame()
 
 void RandomGame::init()
 {
-	srand(time(nullptr));
+	srand((unsigned int)time(nullptr));
 }
 
 int RandomGame::getRandom(int min, int max)

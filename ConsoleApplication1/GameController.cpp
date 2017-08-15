@@ -84,12 +84,28 @@ void GameController::run()
 		impl->visual->setState(vstate);
 	};
 
-	auto enter = [this, &state, &currentItemInBag]()
+	auto enter = [this, &state, &currentItemInBag, &currentItem]()
 	{
 		if (state == VisualState::cellBag)
 		{
 			impl->hero->pickUp(impl->map->getCell(move(impl->hero->getCoord()), false)->getBag(), currentItemInBag);
 		}
+		else if(state == VisualState::bag)
+		{
+			int i = 0;
+			impl->hero->getBag()->forEach([&i, &currentItem, this](shared_ptr<Item> item) {
+				
+				if (i == currentItem) {
+					impl->hero->wearItem(item, L"weapon");
+					return BagItemDo::stop;
+				}
+
+				i++;
+				return BagItemDo::next;
+			});
+			//impl->hero->wearItem();
+		}
+
 	};
 
 	

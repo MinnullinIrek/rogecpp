@@ -20,17 +20,22 @@ Value::Value(double v) : impl(make_unique<Impl>(v))
 {
 }
 
+Value::Value(Value & val) : impl(make_unique<Impl>(val))
+{
+}
+
+
 
 Value::~Value()
 {
 }
 
-Value::operator double()
+Value::operator double() 
 {
 	return impl->val;
 }
 
-Value::operator int()
+Value::operator int() 
 {
 	return static_cast<int>(impl->val);
 }
@@ -54,14 +59,24 @@ void Value::setWatcher(function<void(double)>& watcher)
 	impl->watchers.push_back(watcher);
 }
 
-const Value& operator+(const Value & left, const Value & right)
+Value operator*(const Value & left, const Value & right)
+{
+	return move(Value(left.impl->val * right.impl->val));
+}
+
+Value operator/(const Value & left, const Value & right)
+{
+	return move(Value(left.impl->val / right.impl->val));
+}
+
+Value operator+(const Value & left, const Value & right)
 {
 	return move(Value(left.impl->val + right.impl->val));
 }
 
-const Value & operator-(const Value & left, const Value & right)
+Value  operator-(const Value & left, const Value & right)
 {
-	return move(Value(left.impl->val + right.impl->val));
+	return Value(left.impl->val - right.impl->val);
 }
 
 bool operator==(const Value & left, const Value & right)

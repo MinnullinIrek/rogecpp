@@ -2,7 +2,7 @@
 #include <memory>
 using namespace std;
 
-class ISpaceObject;
+class Unit;
 class Bag;
 
 class Cell
@@ -13,14 +13,12 @@ private:
 public:
 	Cell();
 	virtual ~Cell();
-	auto setSpaceObject(shared_ptr<ISpaceObject> spaceObject) -> void;
-	auto getSpaceObject()->shared_ptr<ISpaceObject>;
+	auto setSpaceObject(shared_ptr<Unit> spaceObject) -> void;
+	auto getSpaceObject()->shared_ptr<Unit>;
 	operator wchar_t();
 	auto getChar() -> wchar_t;
 	auto isEmpty() -> bool;
 	void resetSpaceObject();
 	auto getBag()->shared_ptr<Bag>;
-
-
 };
 

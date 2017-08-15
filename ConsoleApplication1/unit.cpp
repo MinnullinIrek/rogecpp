@@ -7,6 +7,7 @@
 #include "Value.h"
 #include "Bag.h"
 #include "Cell.h"
+#include "IItem.h"
 
 struct Unit::Impl
 {
@@ -15,7 +16,8 @@ struct Unit::Impl
 	unique_ptr<Characs> chars;
 	shared_ptr<Bag> bag = make_shared<Bag>();
 
-	unordered_map<wstring, shared_ptr<Item>> wearingItems;
+
+	shared_ptr<Item> weapon;
 
 
 };
@@ -106,18 +108,38 @@ void Unit::pickUp(shared_ptr<Bag> bag, int itemNum)
 	bag->forEach(getter);
 }
 
+void Unit::wearItem(shared_ptr<Item> item, wstring type)
+{
+	if (type == L"weapon")
+	{
+		impl->weapon = item;
+	}
+}
+
+Unit::Unit():impl(nullptr)
+{
+}
+
 Unit::Unit(wchar_t ch) :impl(make_unique<Impl>())
 {
 	impl->name.ch = ch;
-	cooperator = [](shared_ptr<Unit> attacker, shared_ptr<ISpaceObject> defender) {
+	cooperator = [this](shared_ptr<Unit> attacker, shared_ptr<Unit> defender) {
 		if (defender) {
-			auto defUnit = dynamic_cast<Unit*>(defender.get());
+			if (impl->weapon)
+			{
+				auto f = impl->weapon->getCooperator(L"attack");
+				f(attacker, defender);
+			}
+			else
+			{
+				auto defUnit = dynamic_cast<Unit*>(defender.get());
 
-			if (defUnit != nullptr) {
-				auto & defValHp = defUnit->getParam(L"hp");
-				auto &attValAt = attacker->getParam(L"attack");
+				if (defUnit != nullptr) {
+					auto & defValHp = defUnit->getParam(L"hp");
+					auto &attValAt = attacker->getParam(L"attack");
 
-				defValHp -= attValAt;
+					defValHp -= attValAt;
+				}
 			}
 		}		
 	};
